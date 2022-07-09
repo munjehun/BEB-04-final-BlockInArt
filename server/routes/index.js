@@ -9,8 +9,8 @@ const tradeRouter = require("./trade");
 
 // * request URL : /api/users
 router.use("/user", userRouter);
-// // * request URL : /api/board
-// router.use("/art", artRouter);
+// * request URL : /api/art
+router.use("/art", artRouter);
 // // * request URL : /api/web3
 // router.use("/trade", tradeRouter);
 
