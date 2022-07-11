@@ -22,7 +22,6 @@ module.exports = {
       const { count, rows } = await Art.findAndCountAll({
         where: {art_user_id: userId}
       });
-
       res.status(200).json({
         message: "get artist mypage success",
         count: count,
