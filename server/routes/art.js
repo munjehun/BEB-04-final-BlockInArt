@@ -6,4 +6,7 @@ const { artController } = require("../controller");
 // * POST api/art/insertArt
 router.post("/insertArt", artController.insertArt.post);
 
+// * GET api/art/artList
+router.get("/artList", artController.artList.get);
+
 module.exports = router;

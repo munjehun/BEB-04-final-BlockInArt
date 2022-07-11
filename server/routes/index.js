@@ -11,7 +11,7 @@ const tradeRouter = require("./trade");
 router.use("/user", userRouter);
 // * request URL : /api/art
 router.use("/art", artRouter);
-// // * request URL : /api/web3
-// router.use("/trade", tradeRouter);
+// * request URL : /api/web3
+router.use("/trade", tradeRouter);
 
 module.exports = router;

@@ -18,6 +18,9 @@ router.get("/artist/detail", userController.a_detail.get);
 // * get /users/general/mypage
 router.get("/general/mypage", userController.g_mypage.get);
 
+// * get /users/general/detail
+router.get("/general/detail", userController.g_detail.get);
+
 // * POST /users/join
 router.post("/join", userController.join.post);
 
