@@ -1,0 +1,58 @@
+.main .작가님이신가요 {
+  margin-right: 50px;
+  font-size: 20px;
+}
+
+.main .container__detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.main .pictures_list {
+  display: grid;
+  /* grid 속성 선언 */
+  grid-template-columns: repeat(3, minmax(400px, 1fr));
+  /* 가로로 minmax 400px 인 grid를 3번 반복 */
+  grid-gap: 200px 100px;
+  /* grid간 간격 */
+  padding: 50px;
+  width: 100%;
+  padding-top: 100px;
+}
+
+.main .picture {
+  display: flex;
+  justify-content: center;
+}
+
+.main .picture_name {
+  text-align: center;
+  margin: 10px;
+  font-size: 1.5rem;
+}
+
+.main .price_painter > div {
+  display: inline-block;
+  text-align: center;
+  width: 45%;
+  font-size: 1.2rem;
+  margin: 2%;
+}
+
+.main .container__detail-btn {
+  width: 100%;
+}
+
+.main .wellcome_ment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+}
+
+.main .wellcome_ment > div > button > a {
+  color: white;
+  text-decoration: none;
+}
