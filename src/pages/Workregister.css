@@ -1,0 +1,79 @@
+.workregister {
+  width: 100%;
+}
+
+.register_ment {
+  text-align: center;
+  font-size: 35px;
+}
+
+.work_about {
+  width: 50%;
+  box-sizing: border-box;
+  float: left;
+}
+
+.work_about > ul > li {
+  font-size: 20px;
+  margin: 100px;
+}
+
+.hope_price {
+  width: 50%;
+  box-sizing: border-box;
+  float: right;
+  margin-top: 100px;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.hope_price_input {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.register_button {
+  display: flex;
+  justify-content: center;
+}
+
+.register_button button {
+  width: 150px;
+  height: 40px;
+  border: none;
+  background-color: rgb(47, 172, 23);
+  border-radius: 20px;
+  color: white;
+  font-size: 18px;
+  margin-top: 100px;
+}
+
+.work_about button {
+  width: 150px;
+  height: 40px;
+  border: none;
+  background-color: rgb(47, 172, 23);
+  border-radius: 20px;
+  color: white;
+  font-size: 18px;
+}
+
+.work_about input {
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(191, 226, 179, 0.932);
+}
+
+.hope_price input {
+  border: none;
+  border-radius: 10px;
+  background-color: rgba(191, 226, 179, 0.932);
+}
+
+.work_about select {
+  border: 1px dashed green;
+  border-radius: 10px;
+  background-color: rgba(191, 226, 179, 0.932);
+}

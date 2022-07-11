@@ -1,0 +1,49 @@
+.painter_detail {
+  display: flex;
+  flex-direction: column;
+}
+
+.painter_detail .title {
+  height: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2rem;
+}
+
+.painter_detail .container {
+  display: flex;
+}
+
+.painter_detail .picture {
+  margin: 20px;
+}
+
+.painter_detail .purchase_requests {
+  flex: 1 1 auto;
+  padding: 0 20px;
+}
+
+.painter_detail .purchase_requests > ul {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin-top: 20px;
+  list-style: none;
+  background-color: aliceblue;
+  border: none;
+  border-radius: 30px;
+}
+.painter_detail .purchase_requests > ul > li {
+  flex: 1 1 auto;
+}
+
+.painter_detail button {
+  width: 140px;
+  height: 40px;
+  border: none;
+  background-color: rgb(47, 172, 23);
+  border-radius: 20px;
+  color: white;
+  font-size: 17px;
+}
