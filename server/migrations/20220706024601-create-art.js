@@ -15,7 +15,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       art_size: {
-        type: Sequelize.INTEGER
+        type: Sequelize.STRING
       },
       art_genre: {
         type: Sequelize.STRING
