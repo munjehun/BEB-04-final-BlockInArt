@@ -23,7 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   Art.init({
     art_name: DataTypes.STRING,
-    art_size: DataTypes.INTEGER,
+    art_size: DataTypes.STRING,
     art_genre: DataTypes.STRING,
     art_image: DataTypes.STRING,
     art_desc: DataTypes.TEXT,
