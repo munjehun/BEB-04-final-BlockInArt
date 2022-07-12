@@ -15,9 +15,9 @@ module.exports = {
 
             if (checkId) {
                 // status code 409
-                res.status(409).json({ message: "이미 사용중인 아이디입니다." });
+                res.status(409).json({ message: "already in use" });
             } else{
-                res.status(200).json({message: "ok"});
+                res.status(200).json({message: "can be used"});
             }
         } catch (error) {
             console.log(error);

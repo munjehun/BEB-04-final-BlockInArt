@@ -2,6 +2,11 @@ const { User } = require("../../models");
 const { Trade } = require("../../models");
 module.exports = {
     post: async (req, res) => {
+
+      if(!req.body.user_id){
+        return res.status(401).json({ message: "not authorized" });
+      }
+      
       try {
         const userId = req.body.user_id
         const art_id = req.body.id
