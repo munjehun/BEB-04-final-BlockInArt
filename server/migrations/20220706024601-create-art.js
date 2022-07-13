@@ -32,6 +32,9 @@ module.exports = {
       art_owner: {
         type: Sequelize.STRING
       },
+      art_artist: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE,
