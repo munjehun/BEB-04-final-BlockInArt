@@ -29,7 +29,7 @@ module.exports = {
         art_image: art_image, 
         art_desc: art_desc,
         art_price: art_price,
-        art_owner: user_artistname,
+        art_owner: user_id,
         art_artist: user_artistname,
       })
 

@@ -1,5 +1,5 @@
-const { User } = require("../../models");
 const { Trade } = require("../../models");
+
 module.exports = {
     post: async (req, res) => {
 
@@ -8,15 +8,8 @@ module.exports = {
       }
       
       try {
-        const userId = req.body.user_id
+        const user_id = req.body.user_id
         const art_id = req.body.id
-
-        const userInfo = await User.findOne({
-          where: {user_id: userId},
-          attributes:  ['id']
-        });
-
-        const user_id = userInfo.dataValues.id.toString();
 
         const tradeInfo = await Trade.findOne({
           where: {trade_art_id: art_id, trade_user_id: user_id}

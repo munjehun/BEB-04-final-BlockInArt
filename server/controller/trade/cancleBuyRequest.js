@@ -1,4 +1,3 @@
-const { User } = require("../../models");
 const { Trade } = require("../../models");
 
 module.exports = {
@@ -7,15 +6,8 @@ module.exports = {
       return res.status(401).json({ message: "not authorized" });
     }
     try {
-      const userId = req.body.user_id;
+      const user_id = req.body.user_id;
       const art_id = req.body.id;
-
-      const userInfo = await User.findOne({
-        where: { user_id: userId },
-        attributes: ["id"],
-      });
-
-      const user_id = userInfo.dataValues.id.toString();
 
       const tradeInfo = await Trade.update(
         { trade_state: 0 },
@@ -25,7 +17,7 @@ module.exports = {
       );
 
       console.log(tradeInfo);
-      res.status(200).send({message: "cancle success"});
+      res.status(200).send({ message: "cancle success" });
     } catch (error) {
       console.log(error);
     }
