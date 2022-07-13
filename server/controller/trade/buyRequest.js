@@ -18,12 +18,20 @@ module.exports = {
 
         const user_id = userInfo.dataValues.id.toString();
 
+        const tradeInfo = await Trade.findOne({
+          where: {trade_art_id: art_id, trade_user_id: user_id}
+        })
+
+        if(tradeInfo !== null){
+          return res.status(409).send('already requested');
+        }
+
         Trade.create({
           trade_art_id: art_id,
           trade_user_id: user_id,
           trade_state: 1, // 구매 요청 상태
         })
-
+        
         res.status(200).send({
           message: 'request success'
         })
