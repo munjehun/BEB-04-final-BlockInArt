@@ -5,17 +5,17 @@ function SignupPainter() {
   return (
     <div className="signup_painter">
       <div className="form_container">
-        <div className="title">Signup</div>
+        <div className="title">회원 가입</div>
         <div className="inputs">
           <div>
             <input
-              type="id"
+              type="text"
               // value={Username}
               // onChange={onUsernameHandler}
               placeholder="ID"
               // onKeyPress={onKeyPress}
             />
-            <button>중복체크</button>
+            <button>중복 체크</button>
           </div>
 
           <input
