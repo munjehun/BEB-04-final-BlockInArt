@@ -3,5 +3,6 @@ module.exports = {
     reservation: require("./reservation"),
     cancleBuyRequest: require("./cancleBuyRequest"),
     cancleReservation: require("./cancleReservation"),
+    g_confirmContract: require("./g_confirmContract"),
     
 };

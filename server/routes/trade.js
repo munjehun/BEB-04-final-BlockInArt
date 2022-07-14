@@ -15,4 +15,7 @@ router.post("/cancleBuyRequest", tradeController.cancleBuyRequest.post);
 // * POST api/trade/cancleReservation
 router.post("/cancleReservation", tradeController.cancleReservation.post);
 
+// * POST api/trade/general/g_confirmContract
+router.post("/general/g_confirmContract", tradeController.g_confirmContract.post);
+
 module.exports = router;
