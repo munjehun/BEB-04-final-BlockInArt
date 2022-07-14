@@ -23,11 +23,11 @@ module.exports = {
 
       req.session.save(function () {
         req.session.user_id = userInfo.user_id;
-        if(userInfo.dataValues.user_artistname != null){
+        if (userInfo.dataValues.user_artistname != null) {
           req.session.user_artistname = userInfo.dataValues.user_artistname.toString();
         }
         console.log(req.session);
-        res.json({ data: req.session.user_id, message: "login success" });
+        res.json({ data: userInfo, message: "login success" });
       });
     } catch (error) {
       console.log(error);
