@@ -1,5 +1,5 @@
-const { Art } = require("../../models");
-const { Trade } = require("../../models");
+const { Art } = require("../../../models");
+const { Trade } = require("../../../models");
 
 module.exports = {
   get: async (req, res) => {

@@ -1,6 +1,6 @@
-const { Art } = require("../../models");
-const { User } = require("../../models");
-const { Trade } = require("../../models");
+const { Art } = require("../../../models");
+const { User } = require("../../../models");
+const { Trade } = require("../../../models");
 
 module.exports = {
   get: async (req, res) => {

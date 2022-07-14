@@ -1,5 +1,5 @@
-const { Art } = require("../../models");
-const { Trade } = require("../../models");
+const { Art } = require("../../../models");
+const { Trade } = require("../../../models");
 const { Op } = require("sequelize");
 
 module.exports = {

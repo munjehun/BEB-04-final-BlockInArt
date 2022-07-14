@@ -1,4 +1,4 @@
-const { Trade } = require("../../models");
+const { Trade } = require("../../../models");
 
 module.exports = {
   post: async (req, res) => {
