@@ -1,15 +1,15 @@
 module.exports = {
   post: (req, res) => {
     try {
-      console.log(req.session.user_id)
-      if(!req.session.user_id){
+      console.log(req.session.user_id);
+      if (!req.session.user_id) {
         res.status(400).send();
       } else {
-        res.status(200).send();
-        req.session.destroy()
+        res.status(200).send({message: "session destroy"});
+        req.session.destroy();
       }
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   },
 };
