@@ -19,8 +19,6 @@ function Nav() {
         {/* 삼항연산자 */}
         {user_artistname ? (
           <>
-            <div>작가명 : {user_artistname} </div>
-
             <Link to="mypage1">
               <div>마이페이지</div>
             </Link>
@@ -30,8 +28,6 @@ function Nav() {
           </>
         ) : user_id ? (
           <>
-            <div>아이디 : {user_id} </div>
-
             <Link to="mypage2">
               <div>마이페이지</div>
             </Link>
