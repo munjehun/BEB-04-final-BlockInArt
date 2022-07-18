@@ -1,18 +1,14 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./Login.css";
-import { useCookies } from "react-cookie";
-import { AuthContext, MessageContext } from "../context/store";
 
 function Login() {
-  const { authstate, login } = useContext(AuthContext);
-  const { notify } = useContext(MessageContext);
-
   const [Id, setId] = useState("");
   const [Password, setPassword] = useState("");
   const navigate = useNavigate();
-  const [, setCookie] = useCookies();
+  // const [, setCookie] = useCookies();
+  const user_id = JSON.parse(sessionStorage.getItem("user_id"));
 
   const onIdHandler = (event) => {
     setId(event.currentTarget.value);
@@ -23,8 +19,8 @@ function Login() {
   };
 
   useEffect(() => {
-    //새로고침하면 작동 X
-    if (authstate.auth) {
+    //로그인 돼 있으면 로그인페이지 진입 못하게
+    if (user_id) {
       console.log("이미 로그인 되었습니다.");
       navigate("/");
     } else {
@@ -35,7 +31,7 @@ function Login() {
 
   const onSubmitHandler = () => {
     if (Id.length === 0 || Password.length === 0) {
-      console.log("ID와 비밀번호를 모두 입력해주세요");
+      alert("ID와 비밀번호를 모두 입력해주세요");
       return;
     }
     let body = {
@@ -43,6 +39,7 @@ function Login() {
       user_pass: Password,
     };
 
+    //로그인 요청
     axios
       .request({
         method: "POST",
@@ -50,21 +47,35 @@ function Login() {
         data: body,
         withCredentials: true,
       })
-      //컨텍스트에 저장!!! 어케하냐!!!!!!!!!!
       .then((res) => {
-        const user = res.data.data.user_id;
-        console.log(res);
-        login({ user_id: user });
-        notify(`환영합니다! ${user}님`, "success");
-        navigate("/"); // 홈화면으로 자동 이동
+        const user = res.data.data; //로그인하면 받는 유저 정보
+
+        sessionStorage.setItem("user_id", JSON.stringify(user.user_id));
+        sessionStorage.setItem(
+          "user_artistname",
+          JSON.stringify(user.user_artistname)
+        );
+        //sessionStorage를 이용해서 로그인후 받은 data를 login_data라는 key로 저장
+        //JSON.stringify화 해야 [object Object] 로 저장안됨
+
+        const user_id = JSON.parse(sessionStorage.getItem("user_id"));
+        const user_artistname = JSON.parse(
+          sessionStorage.getItem("user_artistname")
+        );
+        // string화 시킨 것을 다시 json화
+        console.log(user_id);
+        console.log(user_artistname);
+
+        //로그인 완료 후 메인으로 가기
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
         if (err.response.data === "잘못된 비밀번호 입니다.")
-          notify("잘못된 비밀번호입니다", "error");
+          alert("잘못된 비밀번호입니다", "error");
         else if (err.response.data === "계정이 존재하지 않습니다.")
-          notify("계정이 존재하지 않습니다", "error");
-        else notify("로그인할 수 없습니다. 관리자에게 문의해주세요", "error");
+          alert("계정이 존재하지 않습니다", "error");
+        else alert("아이디 또는 비밀번호를 잘못 입력하셨습니다.");
       });
   };
 

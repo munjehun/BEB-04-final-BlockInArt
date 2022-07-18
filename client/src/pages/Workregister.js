@@ -48,7 +48,7 @@ function Workregister() {
         <div className="hope_price">
           희망 판매 금액
           <div className="hope_price_input">
-            <input type="number" />원
+            <input type="number" step="10000" />원
           </div>
           <div className="register_button">
             <button type="submit">작품 등록하기</button>

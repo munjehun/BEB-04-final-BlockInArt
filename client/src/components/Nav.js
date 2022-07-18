@@ -1,18 +1,44 @@
 import React from "react";
 import "./Nav.css";
 import { Link, useNavigate } from "react-router-dom";
-import { useCookies } from "react-cookie";
-// import { useSelector } from "react-redux";
 
 function Nav() {
-  // let loginState = useSelector((state) => state.loginState);
   const navigate = useNavigate();
-  const [cookies] = useCookies();
+  const user_id = JSON.parse(sessionStorage.getItem("user_id"));
+  const user_artistname = JSON.parse(sessionStorage.getItem("user_artistname"));
+
+  // 로그아웃 함수
+  function logout() {
+    sessionStorage.clear(); // 세션 지우기
+    window.location.replace("/"); //메인화면으로 새로고침
+  }
+
   return (
     <div>
       <div className="nav_link">
-        {cookies["username"] ? (
-          <div>logout</div>
+        {/* 삼항연산자 */}
+        {user_artistname ? (
+          <>
+            <div>작가명 : {user_artistname} </div>
+
+            <Link to="mypage1">
+              <div>마이페이지</div>
+            </Link>
+            <button onClick={logout}>
+              <div>로그아웃</div>
+            </button>
+          </>
+        ) : user_id ? (
+          <>
+            <div>아이디 : {user_id} </div>
+
+            <Link to="mypage2">
+              <div>마이페이지</div>
+            </Link>
+            <button onClick={logout}>
+              <div>로그아웃</div>
+            </button>
+          </>
         ) : (
           <>
             <Link to="login">

@@ -5,6 +5,8 @@ import ProductCard from "../components/ProductCard";
 import "./Main.css";
 
 function Main() {
+  const login_data = JSON.parse(sessionStorage.getItem("login_data"));
+
   return (
     <div className="main">
       <div className="wellcome_ment">
