@@ -22,36 +22,11 @@ function Main() {
         <div className="picture">
           <ProductCard />
         </div>
-
         <ProductCard />
         <ProductCard />
         <ProductCard />
         <ProductCard />
         <ProductCard />
-
-        {/* <Container>
-        <Row>
-          <Col lg={4}>
-            <ProductCard />
-            <div className="container__detail-container">
-              <Button
-                className="container__detail-btn"
-                variant="outline-primary"
-              >
-                자세히 보기
-              </Button>
-            </div>
-          </Col>
-          <Col lg={4}>
-            <ProductCard />
-            <Button variant="outline-primary">자세히 보기</Button>
-          </Col>
-          <Col lg={4}>
-            <ProductCard />
-            <Button variant="outline-primary">자세히 보기</Button>
-          </Col>
-        </Row>
-      </Container> */}
       </div>
     </div>
   );
