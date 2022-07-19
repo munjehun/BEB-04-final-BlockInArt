@@ -29,7 +29,8 @@ module.exports = (sequelize, DataTypes) => {
     art_desc: DataTypes.TEXT,
     art_price: DataTypes.INTEGER,
     art_owner: DataTypes.STRING,
-    art_artist: DataTypes.STRING
+    art_artist: DataTypes.STRING,
+    art_state: DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'Art',

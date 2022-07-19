@@ -1,5 +1,6 @@
 const { Art } = require("../../../models");
 const { Trade } = require("../../../models");
+const { Op } = require("sequelize");
 
 module.exports = {
     get: async (req, res) => {
@@ -14,33 +15,31 @@ module.exports = {
           const artInfo = await Art.findOne({
               where: { id: id},
           });
-
-          const tradeInfo = await Trade.count({
-            where:{ trade_art_id: id, trade_state: 2}
+          
+          const tradeCount = await Trade.count({
+            where:{ trade_art_id: id, trade_state:{ [Op.or]: [2, 3]}}
           })
 
-          console.log(tradeInfo);
-
-          if(tradeInfo === 1){
-            const reservationInfo = await Trade.findOne({
-              where:{ trade_art_id: id, trade_state: 2}
+          if(tradeCount !== 0){
+            const afterTradeInfo = await Trade.findOne({
+              where:{ trade_art_id: id, trade_state:{ [Op.or]: [2, 3]}}
             })
 
             return res.status(200).json({
-              message: "get trade reservation success",
-              data: reservationInfo,
+              message: "get artist detail one success",
+              data: afterTradeInfo,
               artInfo : artInfo.dataValues,
             })
           }
 
-          const { count, rows } = await Trade.findAndCountAll({
+          const { count, rows} = await Trade.findAndCountAll({
             
             where: { trade_art_id: id, trade_state: 1}
           });
 
           res.status(200).json({
             message: "get artist detail success",
-            count: count,
+            count : count,
             data: rows,
             artinfo: artInfo.dataValues,
           });

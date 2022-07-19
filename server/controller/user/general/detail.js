@@ -9,16 +9,16 @@ module.exports = {
 
     try {
       const art_id = req.body.id;
-      const user_id = req.body.user_id;
+      const user_id = req.session.user_id;
 
-      const artInfo = await Art.findOne({
+      const detailInfo = await Art.findOne({
         include: { model: Trade, where: { trade_user_id: user_id } },
         where: { id: art_id },
       });
 
       res.status(200).send({
         message: "get general detail success",
-        data: artInfo,
+        data: detailInfo,
       });
     } catch (error) {
       console.log(error);

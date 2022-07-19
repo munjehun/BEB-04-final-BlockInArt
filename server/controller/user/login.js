@@ -11,23 +11,29 @@ module.exports = {
       });
 
       if (!userInfo) {
-        return res.status(401).json({ message: "존재하지 않는 아이디입니다" });
+        return res.status(401).json({ message: "login fail" });
       }
 
       const result = await bcrypt.compare(user_pass, userInfo.user_pass);
       if (!result) {
-        return res.status(401).json({ message: "비밀번호가 틀렸습니다" });
+        return res.status(401).json({ message: "login fail" });
       }
 
       console.log(userInfo.dataValues.user_artistname);
 
+      const userInfo2 = await User.findOne({
+        where: { user_id: user_id },
+        attributes: ["user_id", "user_artistname"],
+      });
+
       req.session.save(function () {
         req.session.user_id = userInfo.user_id;
         if (userInfo.dataValues.user_artistname != null) {
-          req.session.user_artistname = userInfo.dataValues.user_artistname.toString();
+          req.session.user_artistname =
+            userInfo.dataValues.user_artistname.toString();
         }
         console.log(req.session);
-        res.json({ data: userInfo, message: "login success" });
+        res.json({ data: userInfo2, message: "login success" });
       });
     } catch (error) {
       console.log(error);

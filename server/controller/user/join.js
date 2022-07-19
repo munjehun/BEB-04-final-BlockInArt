@@ -2,7 +2,7 @@ const bcrypt = require("bcrypt");
 const { User } = require("../../models");
 
 module.exports = {
-  post: async (req, res, next) => {
+  post: async (req, res) => {
     try {
       const { user_id, user_pass, user_artistname} = req.body;
 

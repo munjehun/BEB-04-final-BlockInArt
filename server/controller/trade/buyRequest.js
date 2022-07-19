@@ -8,15 +8,15 @@ module.exports = {
       }
       
       try {
-        const user_id = req.body.user_id
+        const user_id = req.session.user_id
         const art_id = req.body.id
 
         const tradeInfo = await Trade.findOne({
-          where: {trade_art_id: art_id, trade_user_id: user_id}
+          where: {trade_art_id: art_id, trade_user_id: user_id, trade_state: 1}
         })
 
         if(tradeInfo !== null){
-          return res.status(409).send('already requested');
+          return res.status(200).send('already requested');
         }
 
         Trade.create({
