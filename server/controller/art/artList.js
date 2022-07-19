@@ -4,7 +4,9 @@ module.exports = {
   get: async (req, res) => {
     try {
       
-      const { count, rows } = await Art.findAndCountAll();
+      const { count, rows } = await Art.findAndCountAll({
+        where: { art_state: 0}
+      });
 
       res.status(200).json({
         message: "get art list success",

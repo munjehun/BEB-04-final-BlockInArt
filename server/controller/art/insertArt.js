@@ -31,6 +31,7 @@ module.exports = {
         art_price: art_price,
         art_owner: user_id,
         art_artist: user_artistname,
+        art_state: 0,
       })
 
       console.log("insert success");

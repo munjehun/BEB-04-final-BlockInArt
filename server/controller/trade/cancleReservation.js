@@ -1,4 +1,5 @@
 const { Trade } = require("../../models");
+const { Art } = require("../../models");
 
 module.exports = {
   post: async (req, res) => {
@@ -13,9 +14,13 @@ module.exports = {
         }
       });
 
-      console.log(tradeInfo);
+      Art.update({art_state: 0},{
+        where:{id: art_id}
+      });
 
-      res.status(200).send('cancle reservation success');
+      res.status(200).json({
+        message: "cancle reservation success"
+      });
 
     } catch (error) {
       console.log(error)
