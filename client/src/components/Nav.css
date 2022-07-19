@@ -25,4 +25,5 @@
 }
 .nav_logo > img {
   cursor: pointer;
+  width: 260px;
 }

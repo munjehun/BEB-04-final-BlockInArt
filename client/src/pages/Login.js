@@ -55,13 +55,15 @@ function Login() {
           "user_artistname",
           JSON.stringify(user.user_artistname)
         );
-        //sessionStorage를 이용해서 로그인후 받은 data를 login_data라는 key로 저장
-        //JSON.stringify화 해야 [object Object] 로 저장안됨
+        //sessionStorage를 이용해서 로그인후 받은 data를 세션스토리지에 저장
+        //JSON.stringify화 해야 [object Object] 로 저장 안됨
+
         const user_id = JSON.parse(sessionStorage.getItem("user_id"));
         const user_artistname = JSON.parse(
           sessionStorage.getItem("user_artistname")
         );
         // string화 시킨 것을 다시 json화
+
         console.log(user_id);
         console.log(user_artistname);
 

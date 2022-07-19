@@ -62,7 +62,6 @@ function Nav() {
         <img
           alt="block in art logo image"
           onClick={() => navigate("/")}
-          width={200}
           src="https://www.blockart.institute/wp-content/uploads/2018/10/blockart-logo.png"
         />
       </div>
