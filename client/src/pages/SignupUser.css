@@ -17,6 +17,7 @@
   font-size: 28px;
   margin: 5px 0 25px 0;
   color: rgb(47, 172, 23);
+  margin-bottom: 40px;
 }
 
 .signup_user .input_section {
@@ -29,6 +30,26 @@
   flex-direction: column;
   width: 100%;
   margin-bottom: 8px;
+}
+
+.signup_user .inputs > div {
+  display: flex;
+  align-items: center;
+}
+
+.signup_user .inputs > div > input {
+  flex: 1 1 auto;
+  margin-right: 3px;
+}
+
+.signup_user .inputs > div > button {
+  width: 100px;
+  height: 33px;
+  border: none;
+  background-color: rgb(47, 172, 23);
+  border-radius: 10px;
+  color: white;
+  font-size: 15px;
 }
 
 .signup_user .inputs input {
@@ -48,12 +69,12 @@
 }
 
 .signup_user .submit button {
-  width: 140px;
-  height: 40px;
+  width: 150px;
+  height: 45px;
   border: none;
   background-color: rgb(47, 172, 23);
-  border-radius: 20px;
+  border-radius: 25px;
   color: white;
-  font-size: 18px;
+  font-size: 20px;
   margin-top: 25px;
 }

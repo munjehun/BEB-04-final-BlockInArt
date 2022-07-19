@@ -9,6 +9,15 @@
   color: rgb(42, 150, 20);
 }
 
+.nav_link > button {
+  border: none;
+  background-color: white;
+  color: rgb(42, 150, 20);
+}
+.nav_link > button:hover {
+  color: rgb(0, 0, 192);
+}
+
 .nav_logo {
   display: flex;
   justify-content: center;
@@ -16,4 +25,5 @@
 }
 .nav_logo > img {
   cursor: pointer;
+  width: 260px;
 }
