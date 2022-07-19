@@ -46,9 +46,6 @@ function SignupUser() {
         withCredentials: true,
       })
       .then((res) => {
-        const user = res.data.data; //회원가입하면 받는 유저 정보
-        console.log(user);
-
         //회원가입 완료 후 메인페이지로 가기
         navigate("/");
       })
