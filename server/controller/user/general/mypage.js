@@ -5,7 +5,7 @@ const { Op } = require("sequelize");
 module.exports = {
   get: async (req, res) => {
 
-    if(!req.body.user_id){
+    if(!req.session.user_id){
       return res.status(401).json({ message: "not authorized" });
     }
     
