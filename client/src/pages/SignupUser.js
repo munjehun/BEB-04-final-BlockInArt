@@ -26,6 +26,13 @@ function SignupUser() {
       alert("ID와 비밀번호를 모두 입력해주세요");
       return;
     }
+
+    //비밀번호 유효성 검사
+    if (Password !== PasswordConfirm) {
+      alert("비밀번호 확인을 다시 입력해 주세요");
+      return;
+    }
+
     let body = {
       user_id: Id,
       user_pass: Password,
@@ -39,10 +46,7 @@ function SignupUser() {
         withCredentials: true,
       })
       .then((res) => {
-        const user = res.data.data; //회원가입하면 받는 유저 정보
-        console.log(user);
-
-        //로그인 완료 후 메인으로 가기
+        //회원가입 완료 후 메인페이지로 가기
         navigate("/");
       })
       .catch((err) => {
