@@ -5,7 +5,7 @@ module.exports = {
   post: async (req, res) => {
     const {art_name, art_size, art_genre, art_image, art_desc, art_price} = req.body;
 
-    if(!req.body.user_id){
+    if(!req.session.user_id){
       return res.status(401).json({ message: "not authorized" });
     }
 
