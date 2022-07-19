@@ -7,7 +7,7 @@ module.exports = {
       const { count, rows } = await Art.findAndCountAll();
 
       res.status(200).json({
-        message: "get board LIST success",
+        message: "get art list success",
         count: count,
         data: rows,
       });

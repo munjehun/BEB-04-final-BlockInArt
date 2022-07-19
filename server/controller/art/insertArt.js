@@ -10,7 +10,7 @@ module.exports = {
     }
 
     try {
-      const user_id = req.body.user_id
+      const user_id = req.session.user_id
 
       const userInfo = await User.findOne({
         where: {user_id: user_id},

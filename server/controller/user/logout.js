@@ -3,9 +3,9 @@ module.exports = {
     try {
       console.log(req.session.user_id);
       if (!req.session.user_id) {
-        res.status(400).send();
+        res.status(400).send({message: "logout fail"});
       } else {
-        res.status(200).send({message: "session destroy"});
+        res.status(200).send({message: "logout success"});
         req.session.destroy();
       }
     } catch (error) {
