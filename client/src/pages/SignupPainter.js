@@ -29,6 +29,13 @@ function SignupPainter() {
       alert("ID와 비밀번호를 모두 입력해주세요");
       return;
     }
+
+    //비밀번호 유효성 검사
+    if (Password !== PasswordConfirm) {
+      alert("비밀번호 확인을 다시 입력해 주세요");
+      return;
+    }
+
     let body = {
       user_id: Id,
       user_pass: Password,
