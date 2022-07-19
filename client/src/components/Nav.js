@@ -1,6 +1,7 @@
 import React from "react";
 import "./Nav.css";
 import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 function Nav() {
   const navigate = useNavigate();
@@ -9,8 +10,19 @@ function Nav() {
 
   // 로그아웃 함수
   function logout() {
-    sessionStorage.clear(); // 세션 지우기
-    window.location.replace("/"); //메인화면으로 새로고침
+    axios
+      .request({
+        method: "POST",
+        url: "https://localhost:4000/api/user/logout",
+        withCredentials: true,
+      })
+      .then((res) => {
+        sessionStorage.clear(); // 세션 지우기
+        window.location.replace("/"); //메인화면으로 새로고침
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   return (

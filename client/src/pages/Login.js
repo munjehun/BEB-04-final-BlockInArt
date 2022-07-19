@@ -57,7 +57,6 @@ function Login() {
         );
         //sessionStorage를 이용해서 로그인후 받은 data를 login_data라는 key로 저장
         //JSON.stringify화 해야 [object Object] 로 저장안됨
-
         const user_id = JSON.parse(sessionStorage.getItem("user_id"));
         const user_artistname = JSON.parse(
           sessionStorage.getItem("user_artistname")
