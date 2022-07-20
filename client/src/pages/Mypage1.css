@@ -1,0 +1,53 @@
+.mypage1 .작가님이신가요 {
+  text-align: center;
+  /* border: 1px solid violet; */
+  font-weight: bold;
+  font-size: 50px;
+}
+
+.mypage1 .container__detail-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.mypage1 .pictures_list {
+  display: grid;
+  /* grid 속성 선언 */
+  grid-template-columns: repeat(3, minmax(400px, 1fr));
+  /* 가로로 minmax 400px 인 grid를 3번 반복 */
+  grid-gap: 200px 100px;
+  /* grid간 간격 */
+  padding: 50px;
+  width: 100%;
+  padding-top: 100px;
+}
+
+.mypage1 .picture {
+  display: flex;
+  justify-content: center;
+}
+
+.mypage1 .picture_name {
+  text-align: center;
+  margin: 10px;
+  font-size: 1.5rem;
+}
+
+.mypage1 .price_painter > div {
+  display: inline-block;
+  text-align: center;
+  width: 45%;
+  font-size: 1.2rem;
+  margin: 2%;
+}
+
+.mypage1 .container__detail-btn {
+  width: 100%;
+}
+
+.mypage1 .wellcome_ment > div {
+  display: inline-block;
+  width: 50%;
+}
