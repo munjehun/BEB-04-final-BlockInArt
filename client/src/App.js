@@ -28,7 +28,9 @@ function App() {
         <Route path="/detailPainter" element={<DetailPainter />} />
         <Route path="/detailUser" element={<DetailUser />} />
         <Route path="/workregister" element={<Workregister />} />
+        {/* 작가 마이페이지 */}
         <Route path="/mypage1" element={<Mypage1 />} />
+        {/* 일반 유저 마이페이지 */}
         <Route path="/mypage2" element={<Mypage2 />} />
         <Route
           path="/detailUserAfterContract"

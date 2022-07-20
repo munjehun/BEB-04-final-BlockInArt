@@ -81,3 +81,11 @@
   justify-content: flex-end;
   margin: 20px;
 }
+
+.picture-detail > div > button:hover {
+  color: green;
+  background-color: white;
+  border: 2px solid green;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

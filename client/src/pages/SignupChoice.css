@@ -39,3 +39,11 @@
   font-size: 20px;
   margin-top: 25px;
 }
+
+.signup_choice .submit button:hover {
+  color: green;
+  background-color: white;
+  border: 2px solid green;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}

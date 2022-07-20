@@ -64,8 +64,8 @@ function Login() {
         );
         // string화 시킨 것을 다시 json화
 
-        console.log(user_id);
-        console.log(user_artistname);
+        // console.log(user_id);
+        // console.log(user_artistname);
 
         //로그인 완료 후 메인으로 가기
         navigate("/");

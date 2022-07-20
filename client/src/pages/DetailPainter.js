@@ -1,7 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./DetailPainter.css";
+import axios from "axios";
 
 function DetailPainter() {
+  useEffect(() => {
+    getPaintings();
+  }, []);
+
+  const getPaintings = () => {
+    axios
+      .request({
+        method: "GET",
+        url: "https://localhost:4000/api/user/artist/detail",
+        data: { id: 1 },
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res);
+        console.log("GET 요청 성공");
+      })
+      .catch((err) => {
+        console.log(err);
+        console.log("GET 요청 실패");
+      });
+  };
+
   return (
     <div className="painter_detail">
       <div className="title">작품명</div>
@@ -14,21 +37,24 @@ function DetailPainter() {
         </div>
         <div className="purchase_requests">
           <ul>
-            <li className="purchase_request_username">구매 요청자 1 이름</li>
-            <li className="purchase_request_price">구매 요청 가격</li>
-            <button>계약하기</button>
+            <li className="purchase_request_username">
+              구매 요청자 1 님과 계약
+            </li>
+            <button>예약하기</button>
           </ul>
 
           <ul>
-            <li className="purchase_request_username">구매 요청자 2 이름</li>
-            <li className="purchase_request_price">구매 요청 가격</li>
-            <button>계약하기</button>
+            <li className="purchase_request_username">
+              구매 요청자 2 님과 계약
+            </li>
+            <button>예약하기</button>
           </ul>
 
           <ul>
-            <li className="purchase_request_username">구매 요청자 3 이름</li>
-            <li className="purchase_request_price">구매 요청 가격</li>
-            <button>계약하기</button>
+            <li className="purchase_request_username">
+              구매 요청자 3 님과 계약
+            </li>
+            <button>예약하기</button>
           </ul>
         </div>
       </div>

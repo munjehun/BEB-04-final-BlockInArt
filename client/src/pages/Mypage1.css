@@ -35,14 +35,6 @@
   font-size: 1.5rem;
 }
 
-.mypage1 .price_painter > div {
-  display: inline-block;
-  text-align: center;
-  width: 45%;
-  font-size: 1.2rem;
-  margin: 2%;
-}
-
 .mypage1 .container__detail-btn {
   width: 100%;
 }

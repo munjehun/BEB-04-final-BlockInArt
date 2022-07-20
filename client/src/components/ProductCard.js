@@ -1,25 +1,28 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import "./ProductCard.css";
+import { useNavigate } from "react-router-dom";
 
-function ProductCard() {
+function ProductCard({ picture_name, img, price, artist, requests, link }) {
+  const navigate = useNavigate();
+
   return (
-    <div>
-      <div className="picture_name">작품명</div>
-      <img
-        width="100%"
-        height="100%"
-        src="https://phinf.pstatic.net/dbscthumb/3329_000_9/20170315200826092_ZYKBVY02G.jpg/9750605_i1.jpg?type=m2000_2000_fst"
-      ></img>
+    <div className="productCard">
+      <div className="picture_name">{picture_name}</div>
+      <img src={img}></img>
       <div className="price_painter">
-        <div>가격</div>
-        <div className="작가명">작가명</div>
+        <div>{price}</div>
+        <div className="artistName">{artist}</div>
+        {requests ? <div>요청 수 : {requests}</div> : <></>}
+        {/* 조건으로 무엇을 해야 할까? 같이 논의해보자 */}
       </div>
-      <Link to="detailPainter">
-        <Button className="container__detail-btn" variant="outline-primary">
-          자세히 보기
-        </Button>
-      </Link>
+      <Button
+        className="container__detail-btn"
+        variant="outline-primary"
+        onClick={() => navigate("/detailUser")}
+      >
+        자세히 보기
+      </Button>
     </div>
   );
 }

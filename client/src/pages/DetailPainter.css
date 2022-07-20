@@ -14,14 +14,16 @@
 
 .painter_detail .container {
   display: flex;
+  justify-content: center;
 }
 
 .painter_detail .picture {
   margin: 20px;
+  width: 300px;
 }
 
 .painter_detail .purchase_requests {
-  flex: 1 1 auto;
+  width: 700px;
   padding: 0 20px;
 }
 
@@ -47,4 +49,13 @@
   border-radius: 20px;
   color: white;
   font-size: 17px;
+  box-shadow: inset 0px 0px 0px 0px #a4e271;
+}
+
+.painter_detail button:hover {
+  color: green;
+  background-color: white;
+  border: 2px solid green;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
