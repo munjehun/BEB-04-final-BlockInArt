@@ -94,7 +94,11 @@ function Workregister() {
             </li>
             <li>
               작품 사진{" "}
-              <input
+              <textarea
+                placeholder="작품사진의 주소를 입력하세요"
+                rows="3"
+                cols="35"
+
                 type="text"
                 // accept="image/*"
                 value={Image}
