@@ -1,15 +1,19 @@
-import React, { useState, useEffect} from "react";
+
+import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import ProductCard from "../components/ProductCard";
 import "./Main.css";
+import axios from "axios";
 
 function Main() {
+
   const user_id = JSON.parse(sessionStorage.getItem("user_id"));
   const user_artistname = JSON.parse(sessionStorage.getItem("user_artistname"));
 
   const navigate = useNavigate();
+
   const [paintings, setPaintings] = useState([]);
 
   useEffect(() => {
@@ -24,6 +28,8 @@ function Main() {
         withCredentials: true,
       })
       .then((res) => {
+        console.log(res.data.data);
+
         setPaintings(res.data.data);
       });
   };
@@ -44,14 +50,22 @@ function Main() {
             </button>
           </div>
         </div>
+
       )}
+
+
+        <div>
+          <Button>
+            <Link to="workregister">작품 등록하기 </Link>
+          </Button>
+        </div>
+      </div>
 
       {/* props로 이동할 페이지 내려주기 */}
       <div className="pictures_list">
         {paintings.map((painting) => (
           <ProductCard // props로 다 ProductCard 컴포넌트에 넘기기!
-            key={painting.id} 
-            id={painting.id} //API로 받은 작품고유 id를 props로 ProductCard 컴포넌트에 내려주기
+            key={painting.id} // 컴포넌트를 map할 때도 key필요!
             picture_name={painting.art_name}
             img={painting.art_image}
             price={painting.art_price}
