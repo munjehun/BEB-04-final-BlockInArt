@@ -72,11 +72,6 @@ function Login() {
       })
       .catch((err) => {
         console.log(err);
-        if (err.response.data === "잘못된 비밀번호 입니다.")
-          alert("잘못된 비밀번호입니다", "error");
-        else if (err.response.data === "계정이 존재하지 않습니다.")
-          alert("계정이 존재하지 않습니다", "error");
-        else alert("아이디 또는 비밀번호를 잘못 입력하셨습니다.");
       });
   };
 

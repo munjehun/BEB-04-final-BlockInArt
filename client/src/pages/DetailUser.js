@@ -1,7 +1,35 @@
 import React from "react";
 import "./DetailUser.css";
+import axios from "axios";
+import { useEffect } from "react";
+import { useParams } from "react-router-dom";
 
 function DetailUser() {
+  const { id } = useParams(); // useParams() = 파라미터 값 받아오는 함수
+  console.log(id);
+
+  useEffect(() => {
+    getPaintingInfo();
+  }, []);
+
+  const getPaintingInfo = () => {
+    axios
+      .request({
+        method: "GET",
+        url: "https://localhost:4000/api/art/artDetail",
+        data: { id: id },
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log("API 전송 성공");
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log("API 전송 실패");
+        console.log(err);
+      });
+  };
+
   return (
     <div className="user_detail">
       <div className="title">작품명</div>

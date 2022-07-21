@@ -41,7 +41,7 @@ function DetailUserAfterContract() {
               </dd>
             </div>
           </div>
-          <div className="picture-detail__request">
+          <div className="picture-detail__request-state">
             <button>계약 요청 중</button>
             {/* 삼항연산자로 [계약요청 중 / 계약 완료] 변경시키기 */}
           </div>

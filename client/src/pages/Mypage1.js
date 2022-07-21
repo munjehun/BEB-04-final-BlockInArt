@@ -36,15 +36,27 @@ function Mypage1() {
   //받아온 그림 목록(paintings)들을 ProductCard 컴포넌트에 props로 내려주고 map처리
   return (
     <div className="mypage1">
-      <div className="작가님이신가요">{user_artistname} 작가님 반갑습니다</div>
+      <div className="wellcome_ment">
+        <div className="작가님이신가요">
+          {user_artistname} 작가님 반갑습니다
+        </div>
+        <div>
+          <button onClick={() => navigate("/workregister")}>
+            작품 등록하기
+          </button>
+        </div>
+      </div>
+
       <div className="pictures_list">
         {paintings.map((painting) => (
           <ProductCard // props로 다 ProductCard 컴포넌트에 넘기기!
             key={painting.id} // 컴포넌트를 map할 때도 key필요!
+            id={painting.id}
             picture_name={painting.art_name}
             img={painting.art_image}
             requests={tradeRequests}
             link={"/detailPainter"}
+            page="mypage"
             //할 것)자세히 보기 누르면 이동할 페이지도 props로 넘기기!
           />
         ))}
