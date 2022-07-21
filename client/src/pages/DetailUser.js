@@ -1,23 +1,35 @@
 import React from "react";
 import "./DetailUser.css";
 import axios from "axios";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function DetailUser() {
   const { id } = useParams(); // useParams() = 파라미터 값 받아오는 함수
-  console.log(id);
+  // console.log(id);
+  const [Id, setId] = useState("");
+  // setId(id);
 
   useEffect(() => {
+    setId(id);
+    console.log(Id);
+
     getPaintingInfo();
   }, []);
 
   const getPaintingInfo = () => {
+    console.log(id);
+    // console.log(Id);
+    let body = {
+      id: 4,
+    };
+
     axios
       .request({
-        method: "GET",
+        method: "POST",
         url: "https://localhost:4000/api/art/artDetail",
-        data: { id: id },
+        data: body,
+        // 데이터가 안넘어감!! 프론트 문제인가 서버 문제인가 문제훈인가
         withCredentials: true,
       })
       .then((res) => {
