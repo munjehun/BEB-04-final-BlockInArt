@@ -2,13 +2,12 @@ import React from "react";
 import "./DetailUser.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 
 function DetailUser() {
-  const user_id = JSON.parse(sessionStorage.getItem("user_id"));
+  const navigate = useNavigate();
   const { id } = useParams(); // useParams() = 파라미터 값 받아오는 함수
   const [paintingInfo, setPaintingInfo] = useState([]);
-  const [requestState, setRequestState] = useState(false);
 
   useEffect(() => {
     getPaintingInfo();
@@ -18,14 +17,12 @@ function DetailUser() {
     axios
       .request({
         method: "POST",
-        url: "https://localhost:4000/api/user/general/detail",
+        url: "https://localhost:4000/api/art/artDetail",
         data: { id: id },
         withCredentials: true,
       })
       .then((res) => {
-        // console.log(res.data.data.Trades[0].trade_user_id);
-        // 최종적으로는 user_id와 trade_user_id가 같으면 버튼을 예약요청중 으로 바뀌도록 해야함.
-        console.log(res.data.data.Trades);
+        // console.log(res.data.data);
         setPaintingInfo(res.data.data); // res.data.data가 작품에 대한 정보
       });
   };
@@ -39,11 +36,13 @@ function DetailUser() {
         withCredentials: true,
       })
       .then((res) => {
-        setRequestState(true);
+        // 계약 요청하면 마이페이지로 가도록
         if (res.data == "already requested") {
           alert("이미 계약이 요청되었습니다.");
+          navigate("/mypage2");
         } else if (res.data.message == "request success") {
           alert("계약이 요청되었습니다.");
+          navigate("/mypage2");
         }
       });
   };
@@ -79,11 +78,7 @@ function DetailUser() {
             </div>
           </div>
           <div className="picture-detail__request">
-            {requestState ? (
-              <button onClick={purchaseRequest}>구매 계약 요청 중</button>
-            ) : (
-              <button onClick={purchaseRequest}>구매 계약 요청 보내기</button>
-            )}
+            <button onClick={purchaseRequest}>구매 계약 요청 보내기</button>
           </div>
         </div>
       </div>

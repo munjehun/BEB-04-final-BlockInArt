@@ -7,7 +7,6 @@ function Login() {
   const [Id, setId] = useState("");
   const [Password, setPassword] = useState("");
   const navigate = useNavigate();
-  // const [, setCookie] = useCookies();
   const user_id = JSON.parse(sessionStorage.getItem("user_id"));
 
   const onIdHandler = (event) => {
