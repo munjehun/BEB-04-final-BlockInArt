@@ -45,17 +45,16 @@ function Main() {
         </div>
       )}
 
-      {/* props로 이동할 페이지 내려주기 */}
+      {/* props로 그림 정보 내려주기 */}
       <div className="pictures_list">
         {paintings.map((painting) => (
           <ProductCard // props로 다 ProductCard 컴포넌트에 넘기기!
             key={painting.id} // 컴포넌트를 map할 때도 key필요!
-            id={painting.id}
+            id={painting.id} //작품고유 id를 props로 ProductCard 컴포넌트에 내려주기
             picture_name={painting.art_name}
             img={painting.art_image}
             price={painting.art_price}
             artist={painting.art_artist}
-            //할 것)자세히 보기 누르면 이동할 페이지도 props로 넘기기!
           />
         ))}
       </div>

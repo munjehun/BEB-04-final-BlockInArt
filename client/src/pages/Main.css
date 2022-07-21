@@ -73,6 +73,7 @@
 
 .main .wellcome_ment button:hover {
   color: green;
+  font-weight: bold;
   background-color: white;
   border: 2px solid green;
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
