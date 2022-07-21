@@ -1,3 +1,3 @@
 module.exports = {
-  jsonIPFS: require("./jsonIPFS"),
+  createNFT: require("./createNFT"),
 };

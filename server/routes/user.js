@@ -12,14 +12,14 @@ router.post("/logout", userController.logout.post);
 // * get /users/artist/mypage
 router.get("/artist/mypage", userController.a_mypage.get);
 
-// * get /users/artist/detail
-router.get("/artist/detail", userController.a_detail.get);
+// * post /users/artist/detail
+router.post("/artist/detail", userController.a_detail.post);
 
 // * get /users/general/mypage
 router.get("/general/mypage", userController.g_mypage.get);
 
-// * get /users/general/detail
-router.get("/general/detail", userController.g_detail.get);
+// * post /users/general/detail
+router.post("/general/detail", userController.g_detail.post);
 
 // * POST /users/join
 router.post("/join", userController.join.post);

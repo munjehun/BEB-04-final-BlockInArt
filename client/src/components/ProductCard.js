@@ -3,6 +3,7 @@ import { Button } from "react-bootstrap";
 import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
 
+
 function ProductCard({
   id,
   picture_name,
@@ -16,6 +17,7 @@ function ProductCard({
   const navigate = useNavigate();
 
   return (
+
     <div className="productCard">
       <div className="picture_name">{picture_name}</div>
       <img src={img}></img>
@@ -24,7 +26,9 @@ function ProductCard({
           <div>요청 수 : {requests}</div>
         ) : (
           <>
-            {/* 메인페이지에 출력될 때는 가격과 작가명이 나오도록 */}
+
+            {/* 메인페이지에서 출력될 때는 가격과 작가명이 나오도록 */}
+
             <div>{price}</div>
             <div className="artistName">{artist}</div>
           </>
