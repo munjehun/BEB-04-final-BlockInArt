@@ -1,8 +1,7 @@
 .mypage2 .작가님이신가요 {
-  text-align: center;
-  /* border: 1px solid violet; */
   font-weight: bold;
-  font-size: 50px;
+  font-size: 30px;
+  margin: 50px 0 0 50px;
 }
 
 .mypage2 .container__detail-container {
