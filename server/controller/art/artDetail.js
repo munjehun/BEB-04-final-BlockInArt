@@ -1,7 +1,7 @@
 const { Art } = require("../../models");
 
 module.exports = {
-  get: async (req, res) => {
+  post: async (req, res) => {
 
     try {
       const art_id = req.body.id;
