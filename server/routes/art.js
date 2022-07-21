@@ -9,7 +9,7 @@ router.post("/insertArt", artController.insertArt.post);
 // * GET api/art/artList
 router.get("/artList", artController.artList.get);
 
-// * GET api/art/artDetail
-router.get("/artDetail", artController.artDetail.get);
+// * POST api/art/artDetail
+router.post("/artDetail", artController.artDetail.post);
 
 module.exports = router;
