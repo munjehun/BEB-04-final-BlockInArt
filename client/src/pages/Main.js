@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -6,7 +5,6 @@ import ProductCard from "../components/ProductCard";
 import "./Main.css";
 
 function Main() {
-
   const user_id = JSON.parse(sessionStorage.getItem("user_id"));
   const user_artistname = JSON.parse(sessionStorage.getItem("user_artistname"));
 
@@ -41,14 +39,13 @@ function Main() {
             작가님이신가요? 빠르게 작품을 등록하고 판매계약까지 맺어보세요
           </div>
           <div>
-          <button onClick={() => navigate("/workregister")}>
+            <button onClick={() => navigate("/workregister")}>
+
               작품 등록하기
             </button>
           </div>
         </div>
-
       )}
-
 
       {/* props로 그림 정보 내려주기 */}
 
