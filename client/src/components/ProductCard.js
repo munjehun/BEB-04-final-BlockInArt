@@ -1,25 +1,34 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import "./ProductCard.css";
+import { useNavigate } from "react-router-dom";
 
-function ProductCard() {
-  return (
-    <div>
-      <div className="picture_name">작품명</div>
-      <img
-        width="100%"
-        height="100%"
-        src="https://phinf.pstatic.net/dbscthumb/3329_000_9/20170315200826092_ZYKBVY02G.jpg/9750605_i1.jpg?type=m2000_2000_fst"
-      ></img>
+function ProductCard({id,picture_name,img,price,artist,requests,link,page,}) {
+  const navigate = useNavigate();
+
+ return (
+    <div className="productCard">
+      <div className="picture_name">{picture_name}</div>
+      <img src={img}></img>
       <div className="price_painter">
-        <div>가격</div>
-        <div className="작가명">작가명</div>
+        {page == "mypage" ? ( //마이페이지에 출력될 때만 요청 수 가 나오도록
+          <div>요청 수 : {requests}</div>
+        ) : (
+          <>
+            {/* 메인페이지에서 출력될 때는 가격과 작가명이 나오도록 */}
+            <div>{price}</div>
+            <div className="artistName">{artist}</div>
+          </>
+        )}
       </div>
-      <Link to="detailPainter">
-        <Button className="container__detail-btn" variant="outline-primary">
-          자세히 보기
-        </Button>
-      </Link>
+      <Button
+        className="container__detail-btn"
+        variant="outline-primary"
+        onClick={() => navigate(`/detailUser/${id}`)}
+        //props로 받은 id로 작품마다 작품 개별 페이지로 이동하도록
+      >
+        자세히 보기
+      </Button>
     </div>
   );
 }
