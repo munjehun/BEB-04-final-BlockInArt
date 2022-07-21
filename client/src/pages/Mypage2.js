@@ -17,10 +17,10 @@ function Mypage2() {
       })
       .then((res) => {
         console.log(res);
-        console.log("GET 요청 성공");
+        console.log("일반유저 마이페이지 GET 요청 성공");
       })
       .catch((err) => {
-        console.log("GET 요청 실패");
+        console.log("일반유저 마이페이지 GET 요청 실패");
       });
   };
 

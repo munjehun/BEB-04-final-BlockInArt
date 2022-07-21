@@ -8,6 +8,7 @@ function DetailUser() {
   const navigate = useNavigate();
   const { id } = useParams(); // useParams() = 파라미터 값 받아오는 함수
   const [paintingInfo, setPaintingInfo] = useState([]);
+  const user_artistname = JSON.parse(sessionStorage.getItem("user_artistname"));
 
   useEffect(() => {
     getPaintingInfo();
@@ -24,6 +25,9 @@ function DetailUser() {
       .then((res) => {
         // console.log(res.data.data);
         setPaintingInfo(res.data.data); // res.data.data가 작품에 대한 정보
+      })
+      .catch((err) => {
+        console.log(err);
       });
   };
 
@@ -78,7 +82,11 @@ function DetailUser() {
             </div>
           </div>
           <div className="picture-detail__request">
-            <button onClick={purchaseRequest}>구매 계약 요청 보내기</button>
+            {user_artistname ? (
+              <></>
+            ) : (
+              <button onClick={purchaseRequest}>구매 계약 요청 보내기</button>
+            )}
           </div>
         </div>
       </div>

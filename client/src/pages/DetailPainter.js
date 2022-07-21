@@ -1,8 +1,11 @@
 import React, { useEffect } from "react";
 import "./DetailPainter.css";
 import axios from "axios";
+import { useParams } from "react-router-dom";
 
 function DetailPainter() {
+  const { id } = useParams(); // useParams() = 파라미터 값 받아오는 함수
+
   useEffect(() => {
     getPaintings();
   }, []);
@@ -12,7 +15,7 @@ function DetailPainter() {
       .request({
         method: "GET",
         url: "https://localhost:4000/api/user/artist/detail",
-        data: { id: 1 },
+        data: { id: id },
         withCredentials: true,
       })
       .then((res) => {
@@ -39,20 +42,6 @@ function DetailPainter() {
           <ul>
             <li className="purchase_request_username">
               구매 요청자 1 님과 계약
-            </li>
-            <button>예약하기</button>
-          </ul>
-
-          <ul>
-            <li className="purchase_request_username">
-              구매 요청자 2 님과 계약
-            </li>
-            <button>예약하기</button>
-          </ul>
-
-          <ul>
-            <li className="purchase_request_username">
-              구매 요청자 3 님과 계약
             </li>
             <button>예약하기</button>
           </ul>
