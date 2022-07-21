@@ -19,6 +19,7 @@ function Nav() {
       .then((res) => {
         sessionStorage.clear(); // 세션 지우기
         window.location.replace("/"); //메인화면으로 새로고침
+        alert("로그아웃 되었습니다."); //로그아웃 알림창 띄우기
       })
       .catch((err) => {
         console.log(err);

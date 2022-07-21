@@ -1,10 +1,37 @@
 import React from "react";
 import "./DetailUser.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 function DetailUser() {
+  const { id } = useParams(); // useParams() = 파라미터 값 받아오는 함수
+  const [painting, setPainting] = useState([]);
+
+  useEffect(() => {
+    getPaintingInfo();
+  }, []);
+
+  const getPaintingInfo = () => {
+    console.log(id);
+
+    axios
+      .request({
+        method: "POST",
+        url: "https://localhost:4000/api/art/artDetail",
+        data: { id: id },
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log("API 전송 성공");
+        console.log(res.data.data);
+        setPainting(res.data.data);
+      });
+  };
+
   return (
     <div className="user_detail">
-      <div className="title">작품명</div>
+      <div className="title">{painting.art_name}</div>
       <div className="container">
         <div className="picture">
           <img

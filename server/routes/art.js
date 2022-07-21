@@ -10,6 +10,7 @@ router.post("/insertArt", artController.insertArt.post);
 router.get("/artList", artController.artList.get);
 
 // * GET api/art/artDetail
-router.get("/artDetail", artController.artDetail.get);
+router.post("/artDetail", artController.artDetail.post);
 
 module.exports = router;
+
