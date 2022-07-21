@@ -5,71 +5,85 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 function DetailUser() {
+  const user_id = JSON.parse(sessionStorage.getItem("user_id"));
   const { id } = useParams(); // useParams() = 파라미터 값 받아오는 함수
-  const [painting, setPainting] = useState([]);
+  const [paintingInfo, setPaintingInfo] = useState([]);
+  const [requestState, setRequestState] = useState(false);
 
   useEffect(() => {
     getPaintingInfo();
   }, []);
 
   const getPaintingInfo = () => {
-    console.log(id);
-
     axios
       .request({
         method: "POST",
-        url: "https://localhost:4000/api/art/artDetail",
+        url: "https://localhost:4000/api/user/general/detail",
         data: { id: id },
         withCredentials: true,
       })
       .then((res) => {
-        console.log("API 전송 성공");
-        console.log(res.data.data);
-        setPainting(res.data.data);
+        // console.log(res.data.data.Trades[0].trade_user_id);
+        // 최종적으로는 user_id와 trade_user_id가 같으면 버튼을 예약요청중 으로 바뀌도록 해야함.
+        console.log(res.data.data.Trades);
+        setPaintingInfo(res.data.data); // res.data.data가 작품에 대한 정보
+      });
+  };
+
+  const purchaseRequest = () => {
+    axios
+      .request({
+        method: "POST",
+        url: "https://localhost:4000/api/trade/buyRequest",
+        data: { id: id },
+        withCredentials: true,
+      })
+      .then((res) => {
+        setRequestState(true);
+        if (res.data == "already requested") {
+          alert("이미 계약이 요청되었습니다.");
+        } else if (res.data.message == "request success") {
+          alert("계약이 요청되었습니다.");
+        }
       });
   };
 
   return (
     <div className="user_detail">
-      <div className="title">{painting.art_name}</div>
+      <div className="title">{paintingInfo.art_name}</div>
       <div className="container">
         <div className="picture">
-          <img
-            width={300}
-            src="https://phinf.pstatic.net/dbscthumb/3329_000_9/20170315200826092_ZYKBVY02G.jpg/9750605_i1.jpg?type=m2000_2000_fst"
-          />
+          <img width={300} src={paintingInfo.art_image} />
         </div>
         <div className="picture-detail">
           <div className="picture-detail__info">
             <span>
               <dt>작가명</dt>
-              <dd>홍길동</dd>
+              <dd>{paintingInfo.art_artist}</dd>
             </span>
             <span>
               <dt>분야 장르</dt>
-              <dd>추상화</dd>
+              <dd>{paintingInfo.art_genre}</dd>
             </span>
             <span>
               <dt>작품 크기</dt>
-              <dd>100 * 200</dd>
+              <dd>{paintingInfo.art_size}</dd>
             </span>
             <span>
               <dt>금액</dt>
-              <dd>1,000,000,000</dd>
+              <dd>{paintingInfo.art_price}</dd>
             </span>
             <div>
               <dt>작품 설명</dt>
-              <dd>
-                홍길동이 그린 그림홍길동이 그린 홍길동이 그린 그림홍길동이 그린
-                그림홍길동이 그린 그림 홍길동이그린 그림 홍길동이그린 그림
-                홍길동이그린 그림 홍길동이동이 그린 홍길동이 그린 그림홍길동이
-                그린 그림홍길동이 그린 그림 홍길동이그린 그림 홍길동이그린 그림
-                홍길동이그린 그림 홍길동이
-              </dd>
+              <dd>{paintingInfo.art_desc}</dd>
             </div>
           </div>
           <div className="picture-detail__request">
-            <button>구매 계약 요청 보내기</button>
+            {requestState ? (
+              <button onClick={purchaseRequest}>구매 계약 요청 중</button>
+            ) : (
+              <button onClick={purchaseRequest}>구매 계약 요청 보내기</button>
+            )}
           </div>
         </div>
       </div>
