@@ -29,6 +29,7 @@ function ProductCard({
             <div className="artistName">{artist}</div>
           </>
         )}
+
       </div>
       <Button
         className="container__detail-btn"

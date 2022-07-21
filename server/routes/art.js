@@ -13,3 +13,4 @@ router.get("/artList", artController.artList.get);
 router.post("/artDetail", artController.artDetail.post);
 
 module.exports = router;
+

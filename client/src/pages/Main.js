@@ -1,14 +1,18 @@
+
 import React, { useState, useEffect } from "react";
 import ProductCard from "../components/ProductCard";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "./Main.css";
+import axios from "axios";
 
 function Main() {
+
   const user_id = JSON.parse(sessionStorage.getItem("user_id"));
   const user_artistname = JSON.parse(sessionStorage.getItem("user_artistname"));
 
   const navigate = useNavigate();
+
   const [paintings, setPaintings] = useState([]);
 
   useEffect(() => {
@@ -43,18 +47,22 @@ function Main() {
             </button>
           </div>
         </div>
+
       )}
 
       {/* props로 그림 정보 내려주기 */}
+
       <div className="pictures_list">
         {paintings.map((painting) => (
           <ProductCard // props로 다 ProductCard 컴포넌트에 넘기기!
             key={painting.id} // 컴포넌트를 map할 때도 key필요!
             id={painting.id} //작품고유 id를 props로 ProductCard 컴포넌트에 내려주기
+
             picture_name={painting.art_name}
             img={painting.art_image}
             price={painting.art_price}
             artist={painting.art_artist}
+
           />
         ))}
       </div>
