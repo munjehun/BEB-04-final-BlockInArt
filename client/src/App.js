@@ -31,7 +31,7 @@ function App() {
 
         {/* 작가 계약 예약 취소 페이지 */}
         <Route
-          path="/contractReservation/:trade_user_id"
+          path="/contractReservation/:id/:trade_user_id"
           element={<ContractReservation />}
         />
 
