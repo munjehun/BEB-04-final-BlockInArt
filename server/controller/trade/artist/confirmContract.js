@@ -1,5 +1,7 @@
 const { Trade } = require("../../../models");
 
+const mintNFT = require("../../../functions/mintNFT");
+
 module.exports = {
   post: async (req, res) => {
     try {
@@ -14,7 +16,24 @@ module.exports = {
 
       console.log(trade_state);
 
-      res.send("tetst");
+      if(trade_state === 2){
+        return res.status(200).send({
+          message: "buyer has not confirmed"
+        })
+      }
+
+      const owner_id = req.session.user_id;
+      const buyer_id = trade_user_id;
+
+      const mintData = await mintNFT(owner_id, buyer_id);
+
+      Trade.update({trade_state : 4},{
+        where: { trade_art_id: art_id, trade_user_id: trade_user_id },
+      })
+
+      res.status(200).send({
+        message: "confirm contract success"
+      })
     } catch (error) {
       console.log(error);
     }
