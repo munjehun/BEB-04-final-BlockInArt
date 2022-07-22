@@ -3,18 +3,7 @@ import { Button } from "react-bootstrap";
 import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
 
-
-function ProductCard({
-  id,
-  picture_name,
-  img,
-  price,
-  artist,
-  requests,
-  link,
-  page,
-  trade_state,
-}) {
+function ProductCard({ id, picture_name, img, price, artist, requests, page, trade_state }) {
   const navigate = useNavigate();
   const [trade, setTrade] = useState("");
 
@@ -48,10 +37,10 @@ function ProductCard({
 
     <div className="productCard">
       <div className="picture_name">{picture_name}</div>
-      <img src={img}></img>
+      <img src={img} alt = ''></img>
       <div className="price_painter">
-        {page == "mypage" ? ( //마이페이지에 출력될 때만 요청 수 가 나오도록
-          <div>요청 수 : {requests}</div>
+        {page === "mypage" ? ( //작가마이페이지에 출력될 때만 요청 수 가 나오도록
+          <div>계약 요청 수 : {requests}</div>
         ) : (
           <>
 
@@ -62,7 +51,7 @@ function ProductCard({
           </>
         )}
 
-        {(page == "general_mypage")  ? ( 
+        {(page === "general_mypage")  ? ( 
           <>
             <div>{trade}</div>
             <div>작품이름 : {picture_name}</div>
@@ -77,7 +66,12 @@ function ProductCard({
       <Button
         className="container__detail-btn"
         variant="outline-primary"
-        onClick={() => navigate(`/detailUser/${id}`)}
+        onClick={
+          page == "mypage"
+            ? () => navigate(`/detailPainter/${id}`)
+            : () => navigate(`/detailUser/${id}`)
+          // 작가 마이페이지에서 클릭하면 작가 작품상세페이지로 이동하도록!!
+        }
         //props로 받은 id로 작품마다 작품 개별 페이지로 이동하도록
       >
         자세히 보기
