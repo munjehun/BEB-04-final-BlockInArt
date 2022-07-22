@@ -48,6 +48,14 @@ function DetailUser() {
           alert("계약이 요청되었습니다.");
           navigate("/mypage2");
         }
+      })
+      .catch((err) => {
+        console.log(err);
+        // alert(err);
+        if (err == "AxiosError: Request failed with status code 401") {
+          alert("로그인 후 계약을 요청 해주세요.");
+          navigate("/login");
+        }
       });
   };
 
