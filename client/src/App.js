@@ -14,6 +14,7 @@ import Mypage2 from "./pages/Mypage2";
 import DetailPainter from "./pages/DetailPainter";
 import DetailUser from "./pages/DetailUser";
 import DetailUserAfterContract from "./pages/DetailUserAfterContract";
+import ContractReservation from "./pages/ContractReservation";
 
 function App() {
   return (
@@ -27,7 +28,16 @@ function App() {
         <Route path="/signupUser" element={<SignupUser />} />
         <Route path="/detailPainter/:id" element={<DetailPainter />} />
         <Route path="/detailUser/:id" element={<DetailUser />} />
+
+        {/* 작가 계약 예약 취소 페이지 */}
+        <Route
+          path="/contractReservation/:trade_user_id"
+          element={<ContractReservation />}
+        />
+
+        {/* 작품 등록 페이지 */}
         <Route path="/workregister" element={<Workregister />} />
+
         {/* 작가 마이페이지 */}
         <Route path="/mypage1" element={<Mypage1 />} />
 
