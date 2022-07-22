@@ -51,8 +51,8 @@ function SignupPainter() {
         withCredentials: true,
       })
       .then((res) => {
-        //회원가입 완료 후 메인페이지로 가기
-        navigate("/");
+        //회원가입 완료 후 로그인페이지로 이동
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err);
