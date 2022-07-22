@@ -2,16 +2,22 @@ import React from "react";
 import "./DetailUser.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate} from "react-router-dom";
+import { useLocation } from "react-router";
 
 function DetailUser() {
   const navigate = useNavigate();
   const { id } = useParams(); // useParams() = 파라미터 값 받아오는 함수
   const [paintingInfo, setPaintingInfo] = useState([]);
   const user_artistname = JSON.parse(sessionStorage.getItem("user_artistname"));
+  const [buttonState, setButtonState] = useState('');
+  const { state  } = useLocation();
 
   useEffect(() => {
+    console.log("navigate state : ", state)
+    console.log("id detail : ", id)
     getPaintingInfo();
+    buttonStateChange();
   }, []);
 
   const getPaintingInfo = () => {
@@ -25,6 +31,7 @@ function DetailUser() {
       .then((res) => {
         // console.log(res.data.data);
         setPaintingInfo(res.data.data); // res.data.data가 작품에 대한 정보
+        console.log("paintingInfo : ", paintingInfo)
       })
       .catch((err) => {
         console.log(err);
@@ -50,6 +57,12 @@ function DetailUser() {
         }
       });
   };
+
+  const buttonStateChange = () => {
+    setButtonState("계약 요청보내기")
+
+
+  }
 
   return (
     <div className="user_detail">
@@ -85,7 +98,7 @@ function DetailUser() {
             {user_artistname ? (
               <></>
             ) : (
-              <button onClick={purchaseRequest}>구매 계약 요청 보내기</button>
+              <button onClick={purchaseRequest}>{buttonState}</button>
             )}
           </div>
         </div>

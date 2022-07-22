@@ -6,18 +6,20 @@ import { useNavigate } from "react-router-dom";
 function ProductCard({ id, picture_name, img, price, artist, requests, page, trade_state }) {
   const navigate = useNavigate();
   const [trade, setTrade] = useState("");
+  const [tradeState, setTradeState] = useState();
 
   useEffect(()=>{
+    setTradeState(trade_state);
     if(page === "general_mypage"){
       console.log("trade_state : ",trade_state)
       switch(trade_state) {
         case '1':
           console.log("계약요청");
-          setTrade("거래요청 완료")
+          setTrade("계약요청 완료")
           break;
         case '2':
-          console.log("거래 예약");
-          setTrade("거래 예약 완료")
+          console.log("작가님 거래 예약 신청 완료");
+          setTrade("작가님이 계약을 희망중!")
           break;
 
         case '3':
@@ -69,7 +71,7 @@ function ProductCard({ id, picture_name, img, price, artist, requests, page, tra
         onClick={
           page == "mypage"
             ? () => navigate(`/detailPainter/${id}`)
-            : () => navigate(`/detailUser/${id}`)
+            : () => navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
           // 작가 마이페이지에서 클릭하면 작가 작품상세페이지로 이동하도록!!
         }
         //props로 받은 id로 작품마다 작품 개별 페이지로 이동하도록
@@ -81,3 +83,5 @@ function ProductCard({ id, picture_name, img, price, artist, requests, page, tra
 }
 
 export default ProductCard;
+
+
