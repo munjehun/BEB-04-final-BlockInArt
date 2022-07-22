@@ -22,9 +22,14 @@ module.exports = {
         })
       }
 
+      const owner_id = req.session.user_id;
+      const buyer_id = trade_user_id;
 
+      const mintData = await mintNFT(owner_id, buyer_id);
 
-      res.send("tetst");
+      res.status(200).send({
+        data: mintData
+      })
     } catch (error) {
       console.log(error);
     }

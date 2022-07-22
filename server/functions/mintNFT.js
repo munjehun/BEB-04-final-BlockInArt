@@ -6,10 +6,10 @@ const caver = new Caver("https://api.baobab.klaytn.net:8651/");
 
 const ipfsUpload = require("./ipfsUpload");
 
-async function mintNFT() {
+async function mintNFT(owner_id, buyer_id) {
       const json = JSON.stringify({
-        desc: "test",
-        name: "test",
+        owner_id: owner_id,
+        buyer_id: buyer_id,
       });
 
       const jUrl = await ipfsUpload(json);
