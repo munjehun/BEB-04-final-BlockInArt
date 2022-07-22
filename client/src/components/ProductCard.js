@@ -26,7 +26,7 @@ function ProductCard({
           <>
             {/* 메인페이지에서 출력될 때는 가격과 작가명이 나오도록 */}
 
-            <div>{price}</div>
+            <div>{price}원</div>
             <div className="artistName">{artist}</div>
           </>
         )}

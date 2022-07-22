@@ -13,7 +13,7 @@ function DetailPainter() {
   const getPaintings = () => {
     axios
       .request({
-        method: "GET",
+        method: "POST",
         url: "https://localhost:4000/api/user/artist/detail",
         data: { id: id },
         withCredentials: true,
