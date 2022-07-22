@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
@@ -13,8 +13,36 @@ function ProductCard({
   requests,
   link,
   page,
+  trade_state,
 }) {
   const navigate = useNavigate();
+  const [trade, setTrade] = useState("");
+
+  useEffect(()=>{
+    if(page === "general_mypage"){
+      console.log("trade_state : ",trade_state)
+      switch(trade_state) {
+        case '1':
+          console.log("계약요청");
+          setTrade("거래요청 완료")
+          break;
+        case '2':
+          console.log("거래 예약");
+          setTrade("거래 예약 완료")
+          break;
+
+        case '3':
+          console.log("계약 확정");
+          setTrade("계약 확정")
+          break;
+
+        default:
+          console.log("not case in trade_state");
+          break;
+      }
+    }
+
+  }, []);
 
   return (
 
@@ -33,6 +61,17 @@ function ProductCard({
             <div className="artistName">{artist}</div>
           </>
         )}
+
+        {(page == "general_mypage")  ? ( 
+          <>
+            <div>{trade}</div>
+            <div>작품이름 : {picture_name}</div>
+          </>
+        ) : (
+          console.log("not general_mypage")
+        )}
+
+
 
       </div>
       <Button
