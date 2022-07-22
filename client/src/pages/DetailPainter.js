@@ -1,10 +1,11 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import "./DetailPainter.css";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 
 function DetailPainter() {
   const { id } = useParams(); // useParams() = 파라미터 값 받아오는 함수
+  const [paintingInfo, setPaintingInfo] = useState([]);
 
   useEffect(() => {
     getPaintings();
@@ -19,24 +20,22 @@ function DetailPainter() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
-        console.log("GET 요청 성공");
+        console.log(res.data.artinfo);
+        setPaintingInfo(res.data.artinfo);
       })
       .catch((err) => {
         console.log(err);
-        console.log("GET 요청 실패");
       });
   };
 
+  console.log(id);
+
   return (
     <div className="painter_detail">
-      <div className="title">작품명</div>
+      <div className="title">{paintingInfo.art_name}</div>
       <div className="container">
         <div className="picture">
-          <img
-            width={300}
-            src="https://phinf.pstatic.net/dbscthumb/3329_000_9/20170315200826092_ZYKBVY02G.jpg/9750605_i1.jpg?type=m2000_2000_fst"
-          />
+          <img width={300} src={paintingInfo.art_image} />
         </div>
         <div className="purchase_requests">
           <ul>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import ProductCard from "../components/ProductCard";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
+import ProductCard from "../components/ProductCard";
 import "./Main.css";
 
 function Main() {
@@ -40,6 +40,7 @@ function Main() {
           </div>
           <div>
             <button onClick={() => navigate("/workregister")}>
+
               작품 등록하기
             </button>
           </div>
@@ -52,7 +53,7 @@ function Main() {
         {paintings.map((painting) => (
           <ProductCard // props로 다 ProductCard 컴포넌트에 넘기기!
             key={painting.id} // 컴포넌트를 map할 때도 key필요!
-            id={painting.id} //작품고유 id를 props로 ProductCard 컴포넌트에 내려주기
+            id= {painting.id} //작품고유 id를 props로 ProductCard 컴포넌트에 내려주기
             picture_name={painting.art_name}
             img={painting.art_image}
             price={painting.art_price}

@@ -34,6 +34,8 @@ function Mypage1() {
   return (
     <div className="mypage1">
       <div className="wellcome_ment">
+
+        <div>MyPage</div>
         <div className="작가님이신가요">
           {user_artistname} 작가님 반갑습니다
         </div>
@@ -52,8 +54,7 @@ function Mypage1() {
             picture_name={painting.art_name}
             img={painting.art_image}
             requests={painting.Trades.length}
-            link={"/detailPainter"}
-            page="detailPainter"
+            page="mypage" //page를 props로 넘겨서 어떤 페이지에서 출력되느냐에 따라 다르게 출력되도록
           />
         ))}
       </div>
@@ -62,3 +63,4 @@ function Mypage1() {
 }
 
 export default Mypage1;
+
