@@ -1,14 +1,12 @@
-const abi = require("./abi");
-const contractAddr = require("./contractAddr");
+const abi = require("../controller/web3/abi");
+const contractAddr = require("../controller/web3/contractAddr");
 
 const Caver = require("caver-js");
 const caver = new Caver("https://api.baobab.klaytn.net:8651/");
 
 const ipfsUpload = require("./ipfsUpload");
 
-module.exports = {
-  post: async (req, res) => {
-    try {
+async function mintNFT() {
       const json = JSON.stringify({
         desc: "test",
         name: "test",
@@ -23,7 +21,7 @@ module.exports = {
       console.log(account.address);
 
       const tokenContract = await new caver.klay.Contract(abi, contractAddr, {
-        from: "0x505c94083EB4DAe6a2f92cE485a3335F631Be77C",
+        from: account.address.toString(),
       });
       tokenContract.options.address = contractAddr;
 
@@ -32,12 +30,11 @@ module.exports = {
         gas: 2000000,
       });
 
-      // console.log(account);
       console.log(tx);
 
-      res.send("test");
-    } catch (error) {
-      console.log(error);
-    }
-  },
-};
+      return tx;
+
+}
+
+module.exports = mintNFT
+

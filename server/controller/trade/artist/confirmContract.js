@@ -1,5 +1,7 @@
 const { Trade } = require("../../../models");
 
+const mintNFT = require("../../../functions/mintNFT");
+
 module.exports = {
   post: async (req, res) => {
     try {
@@ -13,6 +15,14 @@ module.exports = {
       const trade_state = tradeInfo.dataValues.trade_state;
 
       console.log(trade_state);
+
+      if(trade_state === 2){
+        return res.status(200).send({
+          message: "buyer has not confirmed"
+        })
+      }
+
+
 
       res.send("tetst");
     } catch (error) {
