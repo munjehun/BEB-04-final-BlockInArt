@@ -34,6 +34,8 @@ function Mypage1() {
   return (
     <div className="mypage1">
       <div className="wellcome_ment">
+
+        <div>MyPage</div>
         <div className="작가님이신가요">
           {user_artistname} 작가님 반갑습니다
         </div>
@@ -61,3 +63,4 @@ function Mypage1() {
 }
 
 export default Mypage1;
+

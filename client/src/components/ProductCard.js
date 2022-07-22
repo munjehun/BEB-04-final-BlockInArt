@@ -1,26 +1,67 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
 
-function ProductCard({ id, picture_name, img, price, artist, requests, page }) {
+function ProductCard({ id, picture_name, img, price, artist, requests, page, trade_state }) {
   const navigate = useNavigate();
+  const [trade, setTrade] = useState("");
+
+  useEffect(()=>{
+    if(page === "general_mypage"){
+      console.log("trade_state : ",trade_state)
+      switch(trade_state) {
+        case '1':
+          console.log("계약요청");
+          setTrade("거래요청 완료")
+          break;
+        case '2':
+          console.log("거래 예약");
+          setTrade("거래 예약 완료")
+          break;
+
+        case '3':
+          console.log("계약 확정");
+          setTrade("계약 확정")
+          break;
+
+        default:
+          console.log("not case in trade_state");
+          break;
+      }
+    }
+
+  }, []);
 
   return (
+
     <div className="productCard">
       <div className="picture_name">{picture_name}</div>
-      <img src={img}></img>
+      <img src={img} alt = ''></img>
       <div className="price_painter">
-        {page == "mypage" ? ( //작가마이페이지에 출력될 때만 요청 수 가 나오도록
+        {page === "mypage" ? ( //작가마이페이지에 출력될 때만 요청 수 가 나오도록
           <div>계약 요청 수 : {requests}</div>
         ) : (
           <>
+
             {/* 메인페이지에서 출력될 때는 가격과 작가명이 나오도록 */}
 
             <div>{price}</div>
             <div className="artistName">{artist}</div>
           </>
         )}
+
+        {(page === "general_mypage")  ? ( 
+          <>
+            <div>{trade}</div>
+            <div>작품이름 : {picture_name}</div>
+          </>
+        ) : (
+          console.log("not general_mypage")
+        )}
+
+
+
       </div>
       <Button
         className="container__detail-btn"
