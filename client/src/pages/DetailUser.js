@@ -14,14 +14,16 @@ function DetailUser() {
   const { state  } = useLocation();
 
   useEffect(() => {
-    console.log("navigate state : ", state)
-    console.log("id detail : ", id)
+    //console.log("navigate state : ", state.tradeState)
+    //console.log("id detail : ", id)
+    buttonStringChange();
     getPaintingInfo();
-    buttonStateChange();
   }, []);
 
+
   const getPaintingInfo = () => {
-    axios
+
+      axios
       .request({
         method: "POST",
         url: "https://localhost:4000/api/art/artDetail",
@@ -31,37 +33,61 @@ function DetailUser() {
       .then((res) => {
         // console.log(res.data.data);
         setPaintingInfo(res.data.data); // res.data.data가 작품에 대한 정보
-        console.log("paintingInfo : ", paintingInfo)
+        //console.log("paintingInfo : ", paintingInfo)
       })
       .catch((err) => {
         console.log(err);
       });
+   
+
   };
 
   const purchaseRequest = () => {
-    axios
-      .request({
-        method: "POST",
-        url: "https://localhost:4000/api/trade/buyRequest",
-        data: { id: id },
-        withCredentials: true,
-      })
-      .then((res) => {
-        // 계약 요청하면 마이페이지로 가도록
-        if (res.data == "already requested") {
-          alert("이미 계약이 요청되었습니다.");
-          navigate("/mypage2");
-        } else if (res.data.message == "request success") {
-          alert("계약이 요청되었습니다.");
-          navigate("/mypage2");
-        }
-      });
+    if(!(state.tradeState)){
+      console.log("api동작")
+      axios
+        .request({
+          method: "POST",
+          url: "https://localhost:4000/api/trade/buyRequest",
+          data: { id: id },
+          withCredentials: true,
+        })
+        .then((res) => {
+          // 계약 요청하면 마이페이지로 가도록
+          if (res.data == "already requested") {
+            alert("이미 계약이 요청되었습니다.");
+            navigate("/mypage2");
+          } else if (res.data.message == "request success") {
+            alert("계약이 요청되었습니다.");
+            navigate("/mypage2");
+          }
+        });
+
+    }else{
+      console.log("미동작")
+    }
   };
 
-  const buttonStateChange = () => {
-    setButtonState("계약 요청보내기")
+  const buttonStringChange = () => {
+    let trade_state = state.tradeState
+    console.log("ping: ", trade_state)
+    switch (trade_state) {
+      case '1':
+        setButtonState("계약 요청 완료")
+        break;
 
+      case '2':
+        setButtonState("계약 진행중...")
+        break;
 
+      case '3':
+        setButtonState("계약 완료")
+        break;
+      
+      default:
+        setButtonState("계약 요청보내기")
+        break;
+    }
   }
 
   return (

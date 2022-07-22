@@ -73,6 +73,7 @@ function ProductCard({ id, picture_name, img, price, artist, requests, page, tra
             ? () => navigate(`/detailPainter/${id}`)
             : () => navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
           // 작가 마이페이지에서 클릭하면 작가 작품상세페이지로 이동하도록!!
+          // 일반작품상세페이지로 넘어갈때 tradeState를 넘겨줌
         }
         //props로 받은 id로 작품마다 작품 개별 페이지로 이동하도록
       >
