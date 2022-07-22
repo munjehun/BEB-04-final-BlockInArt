@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 function Mypage1() {
   const navigate = useNavigate();
   const [paintings, setPaintings] = useState([]);
-  const [tradeRequests, setTradeRequests] = useState(0);
   const user_artistname = JSON.parse(sessionStorage.getItem("user_artistname"));
 
   useEffect(() => {
@@ -22,16 +21,14 @@ function Mypage1() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log("GET 요청 성공");
+        console.log(res.data.data);
         setPaintings(res.data.data); //작가의 그림 목록을 상태(paintings)에 저장
         //res.data.data = API로 받아온 작가의 그림 목록
-        setTradeRequests(res.data.data.Trades.length);
       })
       .catch((err) => {
-        console.log("GET 요청 실패");
+        console.log(err);
       });
   };
-  // console.log(paintings);
 
   //받아온 그림 목록(paintings)들을 ProductCard 컴포넌트에 props로 내려주고 map처리
   return (
@@ -56,10 +53,9 @@ function Mypage1() {
             id={painting.id}
             picture_name={painting.art_name}
             img={painting.art_image}
-            requests={tradeRequests}
+            requests={painting.Trades.length}
             link={"/detailPainter"}
-            page="mypage"
-            //할 것)자세히 보기 누르면 이동할 페이지도 props로 넘기기!
+            page="detailPainter"
           />
         ))}
       </div>
