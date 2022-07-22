@@ -25,7 +25,7 @@ function App() {
         <Route path="/signupChoice" element={<SignupChoice />} />
         <Route path="/signupPainter" element={<SignupPainter />} />
         <Route path="/signupUser" element={<SignupUser />} />
-        <Route path="/mypage1/detailPainter/:id" element={<DetailPainter />} />
+        <Route path="/detailPainter/:id" element={<DetailPainter />} />
         <Route path="/detailUser/:id" element={<DetailUser />} />
         <Route path="/workregister" element={<Workregister />} />
         {/* 작가 마이페이지 */}
