@@ -27,8 +27,12 @@ module.exports = {
 
       const mintData = await mintNFT(owner_id, buyer_id);
 
+      Trade.update({trade_state : 4},{
+        where: { trade_art_id: art_id, trade_user_id: trade_user_id },
+      })
+
       res.status(200).send({
-        data: mintData
+        message: "confirm contract success"
       })
     } catch (error) {
       console.log(error);
