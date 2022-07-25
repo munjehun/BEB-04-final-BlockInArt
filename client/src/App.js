@@ -15,8 +15,8 @@ import DetailPainter from "./pages/DetailPainter";
 import DetailUser from "./pages/DetailUser";
 import OfflineContract_Painter from "./pages/OfflineContract_Painter";
 import ContractReservation from "./pages/ContractReservation";
+import NFT_Success from "./pages/NFT_Success";
 //import ContractUser from "./pages/OfflineContract_User";
-
 
 function App() {
   return (
@@ -30,7 +30,7 @@ function App() {
         <Route path="/signupUser" element={<SignupUser />} />
         <Route path="/detailPainter/:id" element={<DetailPainter />} />
         <Route path="/detailUser/:id" element={<DetailUser />} />
-
+        <Route path="/NFT_Success" element={<NFT_Success />} />
 
         {/* 작가 계약 예약 취소 페이지 */}
         <Route
@@ -53,7 +53,6 @@ function App() {
         />
 
         {/*<Route path="/usercontract" element={<ContractUser/>} />*/}
-
       </Routes>
       {/* <Footer /> */}
     </Router>

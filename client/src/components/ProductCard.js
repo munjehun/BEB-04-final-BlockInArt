@@ -18,9 +18,8 @@ function ProductCard({
   const [buttonText, setButtonText] = useState("");
   const [tradeState, setTradeState] = useState();
 
-
-  useEffect(()=>{
-    console.log("tradestate: ",trade_state )
+  useEffect(() => {
+    console.log("tradestate: ", trade_state);
 
     setTradeState(trade_state);
     if (page === "general_mypage") {
@@ -29,14 +28,14 @@ function ProductCard({
         case "1":
           console.log("계약요청");
 
-          setTrade("계약요청 완료")
-          setButtonText("작가님이 요청을 확인중!")
+          setTrade("계약요청 완료");
+          setButtonText("작가님이 요청을 확인중!");
           break;
 
-        case '2':
+        case "2":
           console.log("작가님 거래 예약 신청 완료");
-          setTrade("작가님이 계약을 희망중!")
-          setButtonText("계약 계속하러가기")
+          setTrade("작가님이 계약을 희망중!");
+          setButtonText("계약 계속하러가기");
           //navigate("/usercontract");
 
           break;
@@ -44,50 +43,47 @@ function ProductCard({
         case "3":
           console.log("계약 확정");
 
-          setTrade("계약 확정")
-          setButtonText("계약 확정 진행중")
+          setTrade("계약 확정");
+          setButtonText("계약 확정 진행중");
 
           break;
 
         default:
           console.log("not case in trade_state");
-          setButtonText("자세히 보기")
+          setButtonText("자세히 보기");
           break;
-      }}
+      }
+    }
 
-      if(page === "main"){
-            setButtonText("자세히 보기")
-        }
-
-
+    if (page === "main") {
+      setButtonText("자세히 보기");
+    }
   }, []);
 
   const pageChange = () => {
-    switch (page){
-      case 'mypage':
-      navigate(`/detailPainter/${id}`)
-      break;
-
-      case 'main':
-        navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
+    switch (page) {
+      case "mypage":
+        navigate(`/detailPainter/${id}`);
         break;
-      
+
+      case "main":
+        navigate(`/detailUser/${id}`, { state: { tradeState: tradeState } });
+        break;
+
       default:
-        navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
+        navigate(`/detailUser/${id}`, { state: { tradeState: tradeState } });
         break;
     }
 
-    switch (tradeState){
-      case '2':
-      navigate(`/usercontract/${id}`)
-      break;
+    switch (tradeState) {
+      case "2":
+        navigate(`/usercontract/${id}`);
+        break;
 
       default:
-      
         break;
     }
-
-  }
+  };
 
   return (
     <div className="productCard">
@@ -101,7 +97,8 @@ function ProductCard({
         ) : (
           <>
             {/* 메인페이지에서 출력될 때는 가격과 작가명이 나오도록 */}
-            <div>{price}</div>
+
+            <div>{price}원</div>
             <div className="artistName">{artist}</div>
           </>
         )}
@@ -110,8 +107,8 @@ function ProductCard({
       <Button
         className="container__detail-btn"
         variant="outline-primary"
-
-        onClick={()=>pageChange()
+        onClick={
+          () => pageChange()
           //page == "mypage"
           //</div>  ? () => navigate(`/detailPainter/${id}`)
           //  : () => navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
@@ -127,4 +124,3 @@ function ProductCard({
 }
 
 export default ProductCard;
-
