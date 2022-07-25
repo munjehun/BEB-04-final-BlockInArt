@@ -31,9 +31,8 @@ function DetailUser() {
         withCredentials: true,
       })
       .then((res) => {
-        // console.log(res.data.data);
-        setPaintingInfo(res.data.data); // res.data.data가 작품에 대한 정보
-        //console.log("paintingInfo : ", paintingInfo)
+
+        setPaintingInfo(res.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -41,13 +40,6 @@ function DetailUser() {
   };
 
   const purchaseRequest = () => {
-
-    if(!(state.tradeState)){
-
-
-    }
-
-    if(!(state.tradeState)){
 
       axios
         .request({
@@ -67,16 +59,11 @@ function DetailUser() {
           }
         }).catch((err) => {
           console.log(err);
-          // alert(err);
           if (err === "AxiosError: Request failed with status code 401") {
             alert("로그인 후 계약을 요청 해주세요.");
             navigate("/login");
           }
         });
-
-    }else{
-      console.log("api 미동작")
-    }
 
   };
 

@@ -65,7 +65,8 @@ function Mypage2() {
             picture_name={painting.Art.art_name}
             img={painting.Art.art_image}
             trade_state = {painting.trade_state}
-            page = "general_mypage"
+            trade_user_id = {painting.trade_user_id}
+            page = "mypage2"
           />
         ))}
 

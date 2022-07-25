@@ -3,23 +3,22 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 
-function OfflineContractCheckUser({ user_artistname, trade_user_id, id }) {
+function OfflineContractCheckUser({ user_artistname, id, trade_user_id }) {
 
   const navigate = useNavigate();
-
   const contractUser = () => {
     axios
     .request({
       method: "POST",
       url: "https://localhost:4000/api/trade/general/confirmContract",
-      data: { user_id: trade_user_id,
-              art_id : id},
+      data: { id : id},
       withCredentials: true,
     })
     .then((res) => {
       console.log(res);
       console.log("trade_user_id : ", trade_user_id)
-      window.location.replace("offlineContract_user/"+trade_user_id)
+      //window.location.replace(`/offlineContract_user/${trade_user_id}`)
+      navigate(`/offlineContract_user/${id}/${trade_user_id}`)
     })
     .catch((err) => {
       console.log(err);

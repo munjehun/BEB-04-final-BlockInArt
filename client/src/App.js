@@ -54,7 +54,7 @@ function App() {
 
         {/* 일반 유저 계약 페이지 */}
         <Route
-          path="/offlineContract_user/:id"
+          path="/offlineContract_user/:id/:trade_user_id"
           element={<OfflineContract_User />}
         />
 
