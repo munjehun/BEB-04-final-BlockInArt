@@ -43,7 +43,7 @@
   /* grid 속성 선언 */
   grid-template-columns: repeat(3, minmax(400px, 1fr));
   /* 가로로 minmax 400px 인 grid를 3번 반복 */
-  grid-gap: 200px 100px;
+  grid-gap: 100px 50px;
   /* grid간 간격 */
   padding: 50px;
   width: 100%;

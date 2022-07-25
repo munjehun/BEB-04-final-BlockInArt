@@ -88,7 +88,7 @@ function ProductCard({
   return (
     <div className="productCard">
       <div className="picture_name">{picture_name}</div>
-      <div className="picture">
+      <div className="picture_container">
         <img src={img} alt=""></img>
       </div>
       <div className="price_painter">
@@ -99,7 +99,8 @@ function ProductCard({
         ) : (
           <>
             {/* 메인페이지에서 출력될 때는 가격과 작가명이 나오도록 */}
-            <div>{price}</div>
+
+            <div>{price}원</div>
             <div className="artistName">{artist}</div>
           </>
         )}
@@ -109,12 +110,10 @@ function ProductCard({
         className="container__detail-btn"
         variant="outline-primary"
         onClick={
-          page == "mypage"
-            ? () => navigate(`/detailPainter/${id}`)
-            : () =>
-                navigate(`/detailUser/${id}`, {
-                  state: { tradeState: tradeState },
-                })
+          () => pageChange()
+          //page == "mypage"
+          //</div>  ? () => navigate(`/detailPainter/${id}`)
+          //  : () => navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
           // 작가 마이페이지에서 클릭하면 작가 작품상세페이지로 이동하도록!!
           // 일반 작품상세페이지로 넘어갈때 tradeState를 넘겨줌
         }
