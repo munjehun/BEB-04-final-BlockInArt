@@ -13,6 +13,7 @@ function DetailPainter() {
     getPaintings();
   }, []);
 
+  //그림 정보 받아오는 API
   const getPaintings = () => {
     axios
       .request({
@@ -22,8 +23,29 @@ function DetailPainter() {
         withCredentials: true,
       })
       .then((res) => {
+        console.log(res.data);
         setRequests(res.data.data);
         setPaintingInfo(res.data.artinfo);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  //예약하기 API
+  const getReservation = (trade_user_id) => {
+    axios
+      .request({
+        method: "POST",
+        url: "https://localhost:4000/api/trade/reservation",
+        data: {
+          id: id, //작품 id
+          trade_user_id: trade_user_id, // 요청자 user_id
+        },
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res);
       })
       .catch((err) => {
         console.log(err);
@@ -43,11 +65,14 @@ function DetailPainter() {
               <li className="purchase_request_username">
                 {request.trade_user_id} 님과 계약
               </li>
-              {/* 버튼을 누르면 해당 유저와의 계약 예약취소 페이지로 넘어가도록*/}
+              {/* 버튼을 누르면 해당 유저와의 계약 진행,취소 페이지로 넘어가도록, 예약승인 처리도 하도록*/}
               <button
-                onClick={() =>
-                  navigate(`/contractReservation/${request.trade_user_id}`)
-                }
+                onClick={() => {
+                  navigate(
+                    `/contractReservation/${paintingInfo.id}/${request.trade_user_id}`
+                  ); //navigate에서 상태넘겨주기 navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
+                  getReservation(request.trade_user_id);
+                }}
               >
                 예약하기
               </button>
