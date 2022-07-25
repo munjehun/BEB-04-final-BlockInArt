@@ -13,6 +13,7 @@ function Mypage1() {
     getPaintings();
   }, []);
 
+  //그림 정보 받아오는 API
   const getPaintings = () => {
     axios
       .request({
@@ -21,7 +22,6 @@ function Mypage1() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data.data);
         setPaintings(res.data.data); //작가의 그림 목록을 상태(paintings)에 저장
         //res.data.data = API로 받아온 작가의 그림 목록
       })

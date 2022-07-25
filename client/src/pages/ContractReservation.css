@@ -30,7 +30,6 @@
 }
 
 .contract_reservation .purchase_requests > div {
-  border: 1px solid violet;
   flex: 1 1 0;
 }
 

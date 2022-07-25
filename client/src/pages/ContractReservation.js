@@ -7,12 +7,12 @@ function ContractReservation() {
   const navigate = useNavigate();
   const { id, trade_user_id } = useParams(); // useParams() = 파라미터 값 받아오는 함수
   const [paintingInfo, setPaintingInfo] = useState([]);
-  const [requests, setRequests] = useState([]);
 
   useEffect(() => {
     getPaintings();
   }, []);
 
+  //작품 정보 받아오는 API
   const getPaintings = () => {
     axios
       .request({
@@ -22,7 +22,6 @@ function ContractReservation() {
         withCredentials: true,
       })
       .then((res) => {
-        setRequests(res.data.data);
         setPaintingInfo(res.data.artinfo);
       })
       .catch((err) => {
@@ -30,6 +29,7 @@ function ContractReservation() {
       });
   };
 
+  //예약 취소 API
   const cancleReservation = () => {
     let body = {
       id: id, //작품 id
@@ -39,6 +39,27 @@ function ContractReservation() {
       .request({
         method: "POST",
         url: "https://localhost:4000/api/trade/cancleReservation",
+        data: body,
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  //예약 진행 API
+  const TradeDetail = () => {
+    let body = {
+      id: id, //작품 id
+      trade_user_id: trade_user_id, // 요청자 user_id
+    };
+    axios
+      .request({
+        method: "POST",
+        url: "https://localhost:4000/api/trade/tradeDetail",
         data: body,
         withCredentials: true,
       })
@@ -62,12 +83,21 @@ function ContractReservation() {
             계약 요청자 : {trade_user_id}
           </div>
           <div>
-            <button className="contract_continue">계약 진행 계속하기</button>
+            <button
+              className="contract_continue"
+              onClick={() => {
+                TradeDetail();
+                navigate(`/offlineContract_painter/${id}/${trade_user_id}`);
+              }}
+            >
+              계약 진행 계속하기
+            </button>
             <button
               className="contract_cancel"
               onClick={() => {
-                navigate(-1);
-                cancleReservation();
+                navigate(-1); //뒤로가기
+                cancleReservation(); //예약 취소 함수
+                alert("예약이 취소되었습니다.");
               }}
             >
               계약 진행 취소하기

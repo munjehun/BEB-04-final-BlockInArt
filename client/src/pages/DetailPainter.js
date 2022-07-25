@@ -13,6 +13,7 @@ function DetailPainter() {
     getPaintings();
   }, []);
 
+  //그림 정보 받아오는 API
   const getPaintings = () => {
     axios
       .request({
@@ -31,6 +32,7 @@ function DetailPainter() {
       });
   };
 
+  //예약하기 API
   const getReservation = (trade_user_id) => {
     axios
       .request({

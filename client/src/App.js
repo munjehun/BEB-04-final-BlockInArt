@@ -13,7 +13,7 @@ import Mypage1 from "./pages/Mypage1";
 import Mypage2 from "./pages/Mypage2";
 import DetailPainter from "./pages/DetailPainter";
 import DetailUser from "./pages/DetailUser";
-import DetailUserAfterContract from "./pages/DetailUserAfterContract";
+import OfflineContract_Painter from "./pages/OfflineContract_Painter";
 import ContractReservation from "./pages/ContractReservation";
 
 function App() {
@@ -44,8 +44,8 @@ function App() {
         {/* 일반 유저 마이페이지 */}
         <Route path="/mypage2" element={<Mypage2 />} />
         <Route
-          path="/detailUserAfterContract"
-          element={<DetailUserAfterContract />}
+          path="/offlineContract_painter/:id/:trade_user_id"
+          element={<OfflineContract_Painter />}
         />
       </Routes>
       {/* <Footer /> */}
