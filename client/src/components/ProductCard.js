@@ -12,6 +12,7 @@ function ProductCard({
   requests,
   page,
   trade_state,
+  trade_user_id,
 }) {
   const navigate = useNavigate();
   const [trade, setTrade] = useState("");
@@ -34,17 +35,14 @@ function ProductCard({
 
         case "2":
           console.log("작가님 거래 예약 신청 완료");
-          setTrade("작가님이 계약을 희망중!");
-          setButtonText("계약 계속하러가기");
-          //navigate("/usercontract");
-
+          setTrade("작가님이 계약을 희망중!")
+          setButtonText("작가님이 계약을 희망중! 계약 계속하러가기")
           break;
 
         case "3":
           console.log("계약 확정");
-
-          setTrade("계약 확정");
-          setButtonText("계약 확정 진행중");
+          setTrade("계약 확정")
+          setButtonText("계약 확정 진행중")
 
           break;
 
@@ -75,10 +73,12 @@ function ProductCard({
         break;
     }
 
-    switch (tradeState) {
-      case "2":
-        navigate(`/usercontract/${id}`);
-        break;
+    switch (tradeState){
+      case '2':
+      if (page === "mypage2"){
+        navigate(`/offlineContract_user/${id}/${trade_user_id}`);
+      }
+      break;
 
       default:
         break;
