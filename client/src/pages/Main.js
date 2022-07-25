@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import ProductCard from "../components/ProductCard";
+//import ProductCard from "../components/ProductCard";
 import "./Main.css";
+import ProductCardnew from "../components/ProductCardnew";
+import ProductCard from "../components/ProductCard";
 
 function Main() {
   const user_id = JSON.parse(sessionStorage.getItem("user_id"));
@@ -25,6 +27,7 @@ function Main() {
       })
       .then((res) => {
         setPaintings(res.data.data);
+        console.log("art_data: ",res.data.data )
       });
   };
 
@@ -32,7 +35,7 @@ function Main() {
     <div className="main">
       {/* 일반 유저일때는 작품등록하기 버튼이 안 보이도록*/}
       {user_id && user_artistname == null ? (
-        <div>일반 유저 환영 문구</div>
+        <div>일반 유저 로그인상태의 메인페이지 입니다</div>
       ) : (
         <div className="wellcome_ment">
           <div className="작가님이신가요">
@@ -50,6 +53,20 @@ function Main() {
       {/* props로 그림 정보 내려주기 */}
 
       <div className="pictures_list">
+        {/* 정보가 분리된 ProductCardnew
+        paintings.map((painting) => (
+          <ProductCardnew // props로 다 ProductCard 컴포넌트에 넘기기!
+            key={painting.id} // 컴포넌트를 map할 때도 key필요!
+            id= {painting.id} //작품고유 id를 props로 ProductCard 컴포넌트에 내려주기
+            picture_name={painting.art_name}
+            img={painting.art_image}
+            price={painting.art_price}
+            artist={painting.art_artist}
+          />
+
+        ))
+        */}
+
         {paintings.map((painting) => (
           <ProductCard // props로 다 ProductCard 컴포넌트에 넘기기!
             key={painting.id} // 컴포넌트를 map할 때도 key필요!
@@ -58,6 +75,8 @@ function Main() {
             img={painting.art_image}
             price={painting.art_price}
             artist={painting.art_artist}
+            trade_state = {"k"}
+            page = {"main"}
           />
         ))}
       </div>
