@@ -16,7 +16,6 @@ import DetailUser from "./pages/DetailUser";
 import OfflineContract_Painter from "./pages/OfflineContract_Painter";
 import ContractReservation from "./pages/ContractReservation";
 import ContractUser from "./pages/OfflineContract_User";
-//import ContractUser from "./pages/OfflineContract_User";
 
 
 function App() {
@@ -47,8 +46,9 @@ function App() {
 
         {/* 일반 유저 마이페이지 */}
         <Route path="/mypage2" element={<Mypage2 />} />
+
         <Route
-          path="/offlineContract_painter/:id/:trade_user_id"
+          path="/offlineContract_Painter/:id/:trade_user_id"
           element={<OfflineContract_Painter />}
         />
 
