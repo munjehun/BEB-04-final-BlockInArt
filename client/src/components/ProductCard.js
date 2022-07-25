@@ -15,33 +15,79 @@ function ProductCard({
 }) {
   const navigate = useNavigate();
   const [trade, setTrade] = useState("");
+  const [buttonText, setButtonText] = useState("");
   const [tradeState, setTradeState] = useState();
 
-  useEffect(() => {
+
+  useEffect(()=>{
+    console.log("tradestate: ",trade_state )
+
     setTradeState(trade_state);
     if (page === "general_mypage") {
       console.log("trade_state : ", trade_state);
       switch (trade_state) {
         case "1":
           console.log("계약요청");
-          setTrade("계약요청 완료");
+
+          setTrade("계약요청 완료")
+          setButtonText("작가님이 요청을 확인중!")
           break;
-        case "2":
+
+        case '2':
           console.log("작가님 거래 예약 신청 완료");
-          setTrade("작가님이 계약을 희망중!");
+          setTrade("작가님이 계약을 희망중!")
+          setButtonText("계약 계속하러가기")
+          //navigate("/usercontract");
+
           break;
 
         case "3":
           console.log("계약 확정");
-          setTrade("계약 확정");
+
+          setTrade("계약 확정")
+          setButtonText("계약 확정 진행중")
+
           break;
 
         default:
           console.log("not case in trade_state");
+          setButtonText("자세히 보기")
           break;
-      }
-    }
+      }}
+
+      if(page === "main"){
+            setButtonText("자세히 보기")
+        }
+
+
   }, []);
+
+  const pageChange = () => {
+    switch (page){
+      case 'mypage':
+      navigate(`/detailPainter/${id}`)
+      break;
+
+      case 'main':
+        navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
+        break;
+      
+      default:
+        navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
+        break;
+    }
+
+    switch (tradeState){
+      case '2':
+      navigate(`/usercontract/${id}`)
+      break;
+
+      default:
+      
+        break;
+    }
+
+  }
 
   return (
     <div className="productCard">
@@ -59,11 +105,30 @@ function ProductCard({
             <div className="artistName">{artist}</div>
           </>
         )}
+<<<<<<< HEAD
+
+        {(page === "general_mypage")  ? ( 
+          <>
+            <div>{trade}</div>
+            <div>작품이름 : {picture_name}</div>
+          </>
+        ) : (
+          console.log("not general_mypage")
+        )}
+
+=======
+>>>>>>> 0db10ff0bf99fcc1c809ff3a0e5b02e047ea2539
       </div>
 
       <Button
         className="container__detail-btn"
         variant="outline-primary"
+<<<<<<< HEAD
+        onClick={()=>pageChange()
+          //page == "mypage"
+          //</div>  ? () => navigate(`/detailPainter/${id}`)
+          //  : () => navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
+=======
         onClick={
           page == "mypage"
             ? () => navigate(`/detailPainter/${id}`)
@@ -71,15 +136,20 @@ function ProductCard({
                 navigate(`/detailUser/${id}`, {
                   state: { tradeState: tradeState },
                 })
+>>>>>>> 0db10ff0bf99fcc1c809ff3a0e5b02e047ea2539
           // 작가 마이페이지에서 클릭하면 작가 작품상세페이지로 이동하도록!!
           // 일반 작품상세페이지로 넘어갈때 tradeState를 넘겨줌
         }
         //props로 받은 id로 작품마다 작품 개별 페이지로 이동하도록
       >
-        자세히 보기
+        {buttonText}
       </Button>
     </div>
   );
 }
 
+<<<<<<< HEAD
 export default ProductCard;
+=======
+export default ProductCard;
+>>>>>>> 0db10ff0bf99fcc1c809ff3a0e5b02e047ea2539

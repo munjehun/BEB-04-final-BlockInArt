@@ -5,11 +5,10 @@ import "./Mypage2.css";
 import axios from "axios";
 
 function Mypage2() {
-  //const user_id = JSON.parse(sessionStorage.getItem("user_id"));//사용자 id 추출
   const [paintings, setPaintings] = useState([]);
   const [trade, setTrade] = useState("");
-  //const navigate = useNavigate();
-  let temp = [];
+
+
 
   useEffect(() => {
     getPaintings();
@@ -39,11 +38,11 @@ function Mypage2() {
     switch(trade_state) {
       case '1':
         console.log("계약요청");
-        setTrade("거래요청 완료")
+        setTrade("계약요청 완료")
         break;
       case '2':
-        console.log("거래 예약");
-        setTrade("거래 예약 완료")
+        console.log("작가님 거래 예약 신청 완료");
+        setTrade("작가님이 계약을 희망중!")
         break;
 
       case '3':
@@ -54,7 +53,8 @@ function Mypage2() {
       default:
         console.log("not case in trade_state");
         break;
-  }}
+    }
+  }
 
   return (
     <div className="mypage2">
