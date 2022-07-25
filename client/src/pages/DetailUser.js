@@ -2,7 +2,7 @@ import React from "react";
 import "./DetailUser.css";
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useParams, useNavigate} from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { useLocation } from "react-router";
 
 function DetailUser() {
@@ -10,8 +10,8 @@ function DetailUser() {
   const { id } = useParams(); // useParams() = 파라미터 값 받아오는 함수
   const [paintingInfo, setPaintingInfo] = useState([]);
   const user_artistname = JSON.parse(sessionStorage.getItem("user_artistname"));
-  const [buttonState, setButtonState] = useState('');
-  const { state  } = useLocation();
+  const [buttonState, setButtonState] = useState("");
+  const { state } = useLocation();
 
   useEffect(() => {
     //console.log("navigate state : ", state.tradeState)
@@ -20,10 +20,8 @@ function DetailUser() {
     getPaintingInfo();
   }, []);
 
-
   const getPaintingInfo = () => {
-
-      axios
+    axios
       .request({
         method: "POST",
         url: "https://localhost:4000/api/art/artDetail",
@@ -38,12 +36,10 @@ function DetailUser() {
       .catch((err) => {
         console.log(err);
       });
-   
   };
 
   const purchaseRequest = () => {
-    if(!(state.tradeState)){
-
+    if (!state.tradeState) {
       axios
         .request({
           method: "POST",
@@ -60,42 +56,40 @@ function DetailUser() {
             alert("계약이 요청되었습니다.");
             navigate("/mypage2");
           }
-        }).catch((err) => {
+        })
+        .catch((err) => {
           console.log(err);
-          // alert(err);
           if (err == "AxiosError: Request failed with status code 401") {
             alert("로그인 후 계약을 요청 해주세요.");
             navigate("/login");
           }
         });
-
-    }else{
-      console.log("api 미동작")
+    } else {
+      console.log("api 미동작");
     }
-
   };
 
   const buttonStringChange = () => {
-    let trade_state = state.tradeState
-    console.log("ping: ", trade_state)
+    let trade_state = state.tradeState;
+    console.log("ping: ", trade_state);
     switch (trade_state) {
-      case '1':
-        setButtonState("계약 요청 완료")
+      case "1":
+        setButtonState("계약 요청 완료");
         break;
 
-      case '2':
-        setButtonState("계약 진행중...")
+      case "2":
+        setButtonState("계약 진행중...");
         break;
 
-      case '3':
-        setButtonState("계약 완료")
+      case "3":
+        setButtonState("계약 완료");
         break;
-      
+
       default:
-        setButtonState("계약 요청보내기")
+        setButtonState("계약 요청보내기");
         break;
     }
-  }
+  };
 
   return (
     <div className="user_detail">

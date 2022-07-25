@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import OfflineContractCheck from "../components/OfflineContractCheck";
 import OfflineContractWaiting from "../components/OfflineContractWaiting";
-import "./OfflineContract_Painter.css";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -24,6 +23,7 @@ function OfflineContract() {
         withCredentials: true,
       })
       .then((res) => {
+        console.log(res.data);
         setTrade_state(res.data.data.trade_state);
       })
       .catch((err) => {
@@ -35,14 +35,13 @@ function OfflineContract() {
   return (
     <>
       {trade_state === "2" ? (
-        <OfflineContractWaiting />
-      ) : trade_state === "3" ? (
+        <OfflineContractWaiting id={id} trade_user_id={trade_user_id} />
+      ) : (
         <OfflineContractCheck
           user_artistname={user_artistname} //작가는 작가명으로 props 내려주고
           trade_user_id={trade_user_id} // 구매자는 user_id로 props 내려줌.
+          id={id}
         />
-      ) : (
-        <div>계약 진행중이 아닙니다.</div>
       )}
     </>
   );

@@ -22,7 +22,7 @@ function ProductCard({
     console.log("tradestate: ", trade_state);
 
     setTradeState(trade_state);
-    if (page === "general_mypage") {
+    if (page === "general_mypage" || page === "mypage") {
       console.log("trade_state : ", trade_state);
       switch (trade_state) {
         case "1":
@@ -88,7 +88,9 @@ function ProductCard({
   return (
     <div className="productCard">
       <div className="picture_name">{picture_name}</div>
-      <img src={img} alt=""></img>
+      <div className="picture_container">
+        <img src={img} alt=""></img>
+      </div>
       <div className="price_painter">
         {page === "mypage" ? ( //작가마이페이지에 출력될 때만 요청 수 가 나오도록
           <div>계약 요청 수 : {requests}</div>
