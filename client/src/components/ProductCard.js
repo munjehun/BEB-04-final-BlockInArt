@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
 import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
 
@@ -106,7 +105,7 @@ function ProductCard({
         )}
       </div>
 
-      <Button
+      <button
         className="container__detail-btn"
         variant="outline-primary"
         onClick={
@@ -120,7 +119,7 @@ function ProductCard({
         //props로 받은 id로 작품마다 작품 개별 페이지로 이동하도록
       >
         {buttonText}
-      </Button>
+      </button>
     </div>
   );
 }
