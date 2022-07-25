@@ -3,20 +3,32 @@ import { Button } from "react-bootstrap";
 import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
 
-function ProductCard({ id, picture_name, img, price, artist, requests, page, trade_state }) {
+function ProductCard({
+  id,
+  picture_name,
+  img,
+  price,
+  artist,
+  requests,
+  page,
+  trade_state,
+}) {
   const navigate = useNavigate();
   const [trade, setTrade] = useState("");
   const [buttonText, setButtonText] = useState("");
   const [tradeState, setTradeState] = useState();
 
+
   useEffect(()=>{
     console.log("tradestate: ",trade_state )
+
     setTradeState(trade_state);
-    if(page === "general_mypage"){
-      console.log("trade_state : ",trade_state)
-      switch(trade_state) {
-        case '1':
+    if (page === "general_mypage") {
+      console.log("trade_state : ", trade_state);
+      switch (trade_state) {
+        case "1":
           console.log("계약요청");
+
           setTrade("계약요청 완료")
           setButtonText("작가님이 요청을 확인중!")
           break;
@@ -26,12 +38,15 @@ function ProductCard({ id, picture_name, img, price, artist, requests, page, tra
           setTrade("작가님이 계약을 희망중!")
           setButtonText("계약 계속하러가기")
           //navigate("/usercontract");
+
           break;
 
-        case '3':
+        case "3":
           console.log("계약 확정");
+
           setTrade("계약 확정")
           setButtonText("계약 확정 진행중")
+
           break;
 
         default:
@@ -43,6 +58,7 @@ function ProductCard({ id, picture_name, img, price, artist, requests, page, tra
       if(page === "main"){
             setButtonText("자세히 보기")
         }
+
 
   }, []);
 
@@ -74,22 +90,22 @@ function ProductCard({ id, picture_name, img, price, artist, requests, page, tra
   }
 
   return (
-
     <div className="productCard">
       <div className="picture_name">{picture_name}</div>
-      <img src={img} alt = ''></img>
+      <img src={img} alt=""></img>
       <div className="price_painter">
         {page === "mypage" ? ( //작가마이페이지에 출력될 때만 요청 수 가 나오도록
           <div>계약 요청 수 : {requests}</div>
+        ) : page === "general_mypage" ? (
+          <div>{trade}</div>
         ) : (
           <>
-
             {/* 메인페이지에서 출력될 때는 가격과 작가명이 나오도록 */}
-
             <div>{price}</div>
             <div className="artistName">{artist}</div>
           </>
         )}
+<<<<<<< HEAD
 
         {(page === "general_mypage")  ? ( 
           <>
@@ -100,16 +116,29 @@ function ProductCard({ id, picture_name, img, price, artist, requests, page, tra
           console.log("not general_mypage")
         )}
 
+=======
+>>>>>>> 0db10ff0bf99fcc1c809ff3a0e5b02e047ea2539
       </div>
+
       <Button
         className="container__detail-btn"
         variant="outline-primary"
+<<<<<<< HEAD
         onClick={()=>pageChange()
           //page == "mypage"
           //</div>  ? () => navigate(`/detailPainter/${id}`)
           //  : () => navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
+=======
+        onClick={
+          page == "mypage"
+            ? () => navigate(`/detailPainter/${id}`)
+            : () =>
+                navigate(`/detailUser/${id}`, {
+                  state: { tradeState: tradeState },
+                })
+>>>>>>> 0db10ff0bf99fcc1c809ff3a0e5b02e047ea2539
           // 작가 마이페이지에서 클릭하면 작가 작품상세페이지로 이동하도록!!
-          // 일반작품상세페이지로 넘어갈때 tradeState를 넘겨줌
+          // 일반 작품상세페이지로 넘어갈때 tradeState를 넘겨줌
         }
         //props로 받은 id로 작품마다 작품 개별 페이지로 이동하도록
       >
@@ -119,4 +148,8 @@ function ProductCard({ id, picture_name, img, price, artist, requests, page, tra
   );
 }
 
+<<<<<<< HEAD
 export default ProductCard;
+=======
+export default ProductCard;
+>>>>>>> 0db10ff0bf99fcc1c809ff3a0e5b02e047ea2539
