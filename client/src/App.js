@@ -15,7 +15,7 @@ import DetailPainter from "./pages/DetailPainter";
 import DetailUser from "./pages/DetailUser";
 import OfflineContract_Painter from "./pages/OfflineContract_Painter";
 import ContractReservation from "./pages/ContractReservation";
-import ContractUser from "./pages/OfflineContract_User";
+//import ContractUser from "./pages/OfflineContract_User";
 
 
 function App() {
@@ -52,7 +52,7 @@ function App() {
           element={<OfflineContract_Painter />}
         />
 
-        <Route path="/usercontract" element={<ContractUser/>} />
+        {/*<Route path="/usercontract" element={<ContractUser/>} />*/}
 
       </Routes>
       {/* <Footer /> */}
