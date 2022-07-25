@@ -1,6 +1,9 @@
-.productCard > img {
+.productCard .picture {
   width: 100%;
-  height: 100%;
+}
+
+.productCard .picture > img {
+  width: 100%;
 }
 
 .productCard .price_painter > div {
@@ -9,4 +12,19 @@
   width: 45%;
   font-size: 1.2rem;
   margin: 2%;
+}
+.productCard .container__detail-btn {
+  width: 100%;
+}
+.productCard .price_painter > div {
+  display: inline-block;
+  text-align: center;
+  width: 45%;
+  font-size: 1.2rem;
+  margin: 2%;
+}
+.productCard .picture_name {
+  text-align: center;
+  margin: 10px;
+  font-size: 1.5rem;
 }

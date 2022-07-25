@@ -49,18 +49,3 @@
   width: 100%;
   padding-top: 100px;
 }
-
-.mypage1 .picture {
-  display: flex;
-  justify-content: center;
-}
-
-.mypage1 .picture_name {
-  text-align: center;
-  margin: 10px;
-  font-size: 1.5rem;
-}
-
-.mypage1 .container__detail-btn {
-  width: 100%;
-}

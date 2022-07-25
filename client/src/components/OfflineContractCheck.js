@@ -1,6 +1,23 @@
+import axios from "axios";
 import React from "react";
 
-function OfflineContractCheck({ user_artistname, trade_user_id }) {
+function OfflineContractCheck({ user_artistname, trade_user_id, id }) {
+  const confirmContract_painter = () => {
+    axios
+      .request({
+        method: "POST",
+        url: "https://localhost:4000/api/trade/artist/confirmContract",
+        data: { id: id, trade_user_id: trade_user_id },
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res.data.message);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="offlineContract_container">
       <div className="checklist">
@@ -28,7 +45,9 @@ function OfflineContractCheck({ user_artistname, trade_user_id }) {
         </label>
       </div>
       <div className="contract--button">
-        <button> 계약하기</button>
+        <button onClick={confirmContract_painter}> 계약하기</button>
+        {/* onClick에 다음 페이지로 넘어가도록 navigate 추가! */}
+        {/* 모든 체크박스 체크했을때만 넘어가도록! */}
       </div>
     </div>
   );

@@ -52,6 +52,7 @@ function Mypage1() {
             picture_name={painting.art_name}
             img={painting.art_image}
             requests={painting.Trades.length}
+            trade_state={painting.art_state}
             page="mypage" //page를 props로 넘겨서 어떤 페이지에서 출력되느냐에 따라 다르게 출력되도록
           />
         ))}

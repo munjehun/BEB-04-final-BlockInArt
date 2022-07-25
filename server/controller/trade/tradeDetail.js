@@ -11,12 +11,12 @@ module.exports = {
         attributes: ["trade_state"],
       });
 
-      const trade_state = tradeInfo.dataValues.trade_state.toString();
+      const trade_state = tradeInfo.dataValues.trade_state.toString()
 
       res.status(200).send({
-        message: "get tradeDetail success",
-        trade_state: trade_state,
-      });
+        message: 'get tradeDetail success',
+        trade_state: trade_state
+      })
     } catch (error) {
       console.log(error);
     }

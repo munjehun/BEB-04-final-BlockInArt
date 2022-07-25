@@ -18,25 +18,24 @@ function ProductCard({
   const [buttonText, setButtonText] = useState("");
   const [tradeState, setTradeState] = useState();
 
-
-  useEffect(()=>{
-    console.log("tradestate: ",trade_state )
+  useEffect(() => {
+    console.log("tradestate: ", trade_state);
 
     setTradeState(trade_state);
-    if (page === "general_mypage") {
+    if (page === "general_mypage" || page === "mypage") {
       console.log("trade_state : ", trade_state);
       switch (trade_state) {
         case "1":
           console.log("계약요청");
 
-          setTrade("계약요청 완료")
-          setButtonText("작가님이 요청을 확인중!")
+          setTrade("계약요청 완료");
+          setButtonText("작가님이 요청을 확인중!");
           break;
 
-        case '2':
+        case "2":
           console.log("작가님 거래 예약 신청 완료");
-          setTrade("작가님이 계약을 희망중!")
-          setButtonText("계약 계속하러가기")
+          setTrade("작가님이 계약을 희망중!");
+          setButtonText("계약 계속하러가기");
           //navigate("/usercontract");
 
           break;
@@ -44,55 +43,54 @@ function ProductCard({
         case "3":
           console.log("계약 확정");
 
-          setTrade("계약 확정")
-          setButtonText("계약 확정 진행중")
+          setTrade("계약 확정");
+          setButtonText("계약 확정 진행중");
 
           break;
 
         default:
           console.log("not case in trade_state");
-          setButtonText("자세히 보기")
+          setButtonText("자세히 보기");
           break;
-      }}
+      }
+    }
 
-      if(page === "main"){
-            setButtonText("자세히 보기")
-        }
-
-
+    if (page === "main") {
+      setButtonText("자세히 보기");
+    }
   }, []);
 
   const pageChange = () => {
-    switch (page){
-      case 'mypage':
-      navigate(`/detailPainter/${id}`)
-      break;
-
-      case 'main':
-        navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
+    switch (page) {
+      case "mypage":
+        navigate(`/detailPainter/${id}`);
         break;
-      
+
+      case "main":
+        navigate(`/detailUser/${id}`, { state: { tradeState: tradeState } });
+        break;
+
       default:
-        navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
+        navigate(`/detailUser/${id}`, { state: { tradeState: tradeState } });
         break;
     }
 
-    switch (tradeState){
-      case '2':
-      navigate(`/usercontract/${id}`)
-      break;
+    switch (tradeState) {
+      case "2":
+        navigate(`/usercontract/${id}`);
+        break;
 
       default:
-      
         break;
     }
-
-  }
+  };
 
   return (
     <div className="productCard">
       <div className="picture_name">{picture_name}</div>
-      <img src={img} alt=""></img>
+      <div className="picture">
+        <img src={img} alt=""></img>
+      </div>
       <div className="price_painter">
         {page === "mypage" ? ( //작가마이페이지에 출력될 때만 요청 수 가 나오도록
           <div>계약 요청 수 : {requests}</div>
@@ -105,30 +103,11 @@ function ProductCard({
             <div className="artistName">{artist}</div>
           </>
         )}
-<<<<<<< HEAD
-
-        {(page === "general_mypage")  ? ( 
-          <>
-            <div>{trade}</div>
-            <div>작품이름 : {picture_name}</div>
-          </>
-        ) : (
-          console.log("not general_mypage")
-        )}
-
-=======
->>>>>>> 0db10ff0bf99fcc1c809ff3a0e5b02e047ea2539
       </div>
 
       <Button
         className="container__detail-btn"
         variant="outline-primary"
-<<<<<<< HEAD
-        onClick={()=>pageChange()
-          //page == "mypage"
-          //</div>  ? () => navigate(`/detailPainter/${id}`)
-          //  : () => navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
-=======
         onClick={
           page == "mypage"
             ? () => navigate(`/detailPainter/${id}`)
@@ -136,7 +115,6 @@ function ProductCard({
                 navigate(`/detailUser/${id}`, {
                   state: { tradeState: tradeState },
                 })
->>>>>>> 0db10ff0bf99fcc1c809ff3a0e5b02e047ea2539
           // 작가 마이페이지에서 클릭하면 작가 작품상세페이지로 이동하도록!!
           // 일반 작품상세페이지로 넘어갈때 tradeState를 넘겨줌
         }
@@ -148,8 +126,4 @@ function ProductCard({
   );
 }
 
-<<<<<<< HEAD
 export default ProductCard;
-=======
-export default ProductCard;
->>>>>>> 0db10ff0bf99fcc1c809ff3a0e5b02e047ea2539

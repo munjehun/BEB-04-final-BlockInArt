@@ -31,29 +31,6 @@
   padding-top: 100px;
 }
 
-.main .picture {
-  display: flex;
-  justify-content: center;
-}
-
-.main .picture_name {
-  text-align: center;
-  margin: 10px;
-  font-size: 1.5rem;
-}
-
-.main .price_painter > div {
-  display: inline-block;
-  text-align: center;
-  width: 45%;
-  font-size: 1.2rem;
-  margin: 2%;
-}
-
-.main .container__detail-btn {
-  width: 100%;
-}
-
 .main .wellcome_ment {
   display: flex;
   justify-content: center;
