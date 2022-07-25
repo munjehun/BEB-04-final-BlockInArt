@@ -70,7 +70,7 @@ function DetailPainter() {
                 onClick={() => {
                   navigate(
                     `/contractReservation/${paintingInfo.id}/${request.trade_user_id}`
-                  );
+                  ); //navigate에서 상태넘겨주기 navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
                   getReservation(request.trade_user_id);
                 }}
               >
