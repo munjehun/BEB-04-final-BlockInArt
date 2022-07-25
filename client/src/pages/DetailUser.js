@@ -29,9 +29,8 @@ function DetailUser() {
         withCredentials: true,
       })
       .then((res) => {
-        // console.log(res.data.data);
-        setPaintingInfo(res.data.data); // res.data.data가 작품에 대한 정보
-        //console.log("paintingInfo : ", paintingInfo)
+
+        setPaintingInfo(res.data.data);
       })
       .catch((err) => {
         console.log(err);
@@ -39,7 +38,6 @@ function DetailUser() {
   };
 
   const purchaseRequest = () => {
-    if (!state.tradeState) {
       axios
         .request({
           method: "POST",
@@ -52,7 +50,7 @@ function DetailUser() {
           if (res.data == "already requested") {
             alert("이미 계약이 요청되었습니다.");
             navigate("/mypage2");
-          } else if (res.data.message == "request success") {
+          } else if (res.data.message === "request success") {
             alert("계약이 요청되었습니다.");
             navigate("/mypage2");
           }
@@ -64,14 +62,32 @@ function DetailUser() {
             navigate("/login");
           }
         });
-    } else {
-      console.log("api 미동작");
-    }
+
   };
 
   const buttonStringChange = () => {
-    let trade_state = state.tradeState;
-    console.log("ping: ", trade_state);
+    let trade_state = state.tradeState
+
+    if(!trade_state){
+      axios
+      .request({
+        method: "POST",
+        url: "https://localhost:4000/api/user/general/detail",
+        data: { id: id },
+        withCredentials: true,
+      })
+      .then((res) => {
+        //trade_state = res.data.data.Trades[0].trade_state
+        trade_state = res.data.data
+        console.log("trade 마지막...ㅠ : trade_state",trade_state )
+
+      }).catch((err) => {
+        console.log(err);
+        }
+      );
+    }
+
+    console.log("ping: ", trade_state)
     switch (trade_state) {
       case "1":
         setButtonState("계약 요청 완료");
