@@ -23,7 +23,7 @@ function ProductCard({
     console.log("tradestate: ",trade_state )
 
     setTradeState(trade_state);
-    if (page === "general_mypage") {
+    if (page === "general_mypage" || page === "mypage") {
       console.log("trade_state : ", trade_state);
       switch (trade_state) {
         case "1":
@@ -37,13 +37,10 @@ function ProductCard({
           console.log("작가님 거래 예약 신청 완료");
           setTrade("작가님이 계약을 희망중!")
           setButtonText("계약 계속하러가기")
-          //navigate("/usercontract");
-
           break;
 
         case "3":
           console.log("계약 확정");
-
           setTrade("계약 확정")
           setButtonText("계약 확정 진행중")
 
@@ -65,10 +62,11 @@ function ProductCard({
   const pageChange = () => {
     switch (page){
       case 'mypage':
-      navigate(`/detailPainter/${id}`)
+        navigate(`/detailPainter/${id}`)
       break;
 
       case 'main':
+        console.log("mainpage go")
         navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
         break;
       
@@ -79,7 +77,9 @@ function ProductCard({
 
     switch (tradeState){
       case '2':
-      navigate(`/usercontract/${id}`)
+      if (page === "general_mypage"){
+        navigate(`/offlineContract_user/${id}`);
+      }
       break;
 
       default:

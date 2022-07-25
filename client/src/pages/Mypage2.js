@@ -8,8 +8,6 @@ function Mypage2() {
   const [paintings, setPaintings] = useState([]);
   const [trade, setTrade] = useState("");
 
-
-
   useEffect(() => {
     getPaintings();
 
@@ -61,7 +59,6 @@ function Mypage2() {
       <div className="작가님이신가요">나의 구매요청 목록</div>
       <div className="pictures_list">
         {paintings.map((painting) => (
-
           <ProductCard 
             key={painting.Art.id}
             id= {painting.Art.id} 

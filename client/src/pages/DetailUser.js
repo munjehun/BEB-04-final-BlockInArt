@@ -38,10 +38,15 @@ function DetailUser() {
       .catch((err) => {
         console.log(err);
       });
-   
   };
 
   const purchaseRequest = () => {
+
+    if(!(state.tradeState)){
+
+
+    }
+
     if(!(state.tradeState)){
 
       axios
@@ -56,14 +61,14 @@ function DetailUser() {
           if (res.data == "already requested") {
             alert("이미 계약이 요청되었습니다.");
             navigate("/mypage2");
-          } else if (res.data.message == "request success") {
+          } else if (res.data.message === "request success") {
             alert("계약이 요청되었습니다.");
             navigate("/mypage2");
           }
         }).catch((err) => {
           console.log(err);
           // alert(err);
-          if (err == "AxiosError: Request failed with status code 401") {
+          if (err === "AxiosError: Request failed with status code 401") {
             alert("로그인 후 계약을 요청 해주세요.");
             navigate("/login");
           }
@@ -77,6 +82,26 @@ function DetailUser() {
 
   const buttonStringChange = () => {
     let trade_state = state.tradeState
+
+    if(!trade_state){
+      axios
+      .request({
+        method: "POST",
+        url: "https://localhost:4000/api/user/general/detail",
+        data: { id: id },
+        withCredentials: true,
+      })
+      .then((res) => {
+        //trade_state = res.data.data.Trades[0].trade_state
+        trade_state = res.data.data
+        console.log("trade 마지막...ㅠ : trade_state",trade_state )
+
+      }).catch((err) => {
+        console.log(err);
+        }
+      );
+    }
+
     console.log("ping: ", trade_state)
     switch (trade_state) {
       case '1':

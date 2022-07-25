@@ -75,7 +75,6 @@ function Main() {
             img={painting.art_image}
             price={painting.art_price}
             artist={painting.art_artist}
-            trade_state = {"k"}
             page = {"main"}
           />
         ))}
