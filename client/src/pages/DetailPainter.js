@@ -45,9 +45,9 @@ function DetailPainter() {
               </li>
               {/* 버튼을 누르면 해당 유저와의 계약 예약취소 페이지로 넘어가도록*/}
               <button
-                onClick={navigate(
-                  `/contractReservation/${request.trade_user_id}`
-                )}
+                onClick={() =>
+                  navigate(`/contractReservation/${request.trade_user_id}`)
+                }
               >
                 예약하기
               </button>
