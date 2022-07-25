@@ -105,38 +105,16 @@ function ProductCard({
             <div className="artistName">{artist}</div>
           </>
         )}
-<<<<<<< HEAD
-
-        {(page === "general_mypage")  ? ( 
-          <>
-            <div>{trade}</div>
-            <div>작품이름 : {picture_name}</div>
-          </>
-        ) : (
-          console.log("not general_mypage")
-        )}
-
-=======
->>>>>>> 0db10ff0bf99fcc1c809ff3a0e5b02e047ea2539
       </div>
 
       <Button
         className="container__detail-btn"
         variant="outline-primary"
-<<<<<<< HEAD
+
         onClick={()=>pageChange()
           //page == "mypage"
           //</div>  ? () => navigate(`/detailPainter/${id}`)
           //  : () => navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
-=======
-        onClick={
-          page == "mypage"
-            ? () => navigate(`/detailPainter/${id}`)
-            : () =>
-                navigate(`/detailUser/${id}`, {
-                  state: { tradeState: tradeState },
-                })
->>>>>>> 0db10ff0bf99fcc1c809ff3a0e5b02e047ea2539
           // 작가 마이페이지에서 클릭하면 작가 작품상세페이지로 이동하도록!!
           // 일반 작품상세페이지로 넘어갈때 tradeState를 넘겨줌
         }
@@ -148,8 +126,5 @@ function ProductCard({
   );
 }
 
-<<<<<<< HEAD
 export default ProductCard;
-=======
-export default ProductCard;
->>>>>>> 0db10ff0bf99fcc1c809ff3a0e5b02e047ea2539
+
