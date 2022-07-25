@@ -16,7 +16,9 @@ module.exports = {
         })
 
         if(tradeInfo !== null){
-          return res.status(200).send('already requested');
+          return res.status(200).send({
+            message: 'already requested'
+          });
         }
 
         Trade.create({
