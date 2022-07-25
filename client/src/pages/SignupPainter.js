@@ -70,7 +70,7 @@ function SignupPainter() {
       })
       .then((res) => {
         const data = res.data.message;
-        if (data == "already in use") {
+        if (data === "already in use") {
           alert("이미 사용중인 아이디입니다.");
         } else {
           alert("사용 가능한 아이디입니다.");
