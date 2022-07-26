@@ -22,7 +22,7 @@ function ContractReservation() {
         withCredentials: true,
       })
       .then((res) => {
-        setPaintingInfo(res.data.artinfo);
+        setPaintingInfo(res.data.artInfo);
       })
       .catch((err) => {
         console.log(err);
