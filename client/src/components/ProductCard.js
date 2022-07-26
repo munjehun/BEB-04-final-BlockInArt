@@ -105,14 +105,15 @@ function ProductCard({
           </>
         )}
       </div>
-
-      <button
-        className="container__detail-btn"
-        variant="outline-primary"
-        onClick={() => pageChange()}
-      >
-        {buttonText}
-      </button>
+      <div className="btn-container">
+        <button
+          className="container__detail-btn"
+          variant="outline-primary"
+          onClick={() => pageChange()}
+        >
+          {buttonText}
+        </button>
+      </div>
     </div>
   );
 }
