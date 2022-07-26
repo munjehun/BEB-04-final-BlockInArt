@@ -6,6 +6,7 @@ import Loading from "../components/Loading";
 function NFT_Success() {
   const navigate = useNavigate();
   const [isLoading, setIsLoading] = useState(false);
+
   useEffect(() => {
     getLoadingment();
   });

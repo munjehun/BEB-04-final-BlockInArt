@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "react-bootstrap";
 import "./ProductCard.css";
 import { useNavigate } from "react-router-dom";
 
@@ -35,14 +34,14 @@ function ProductCard({
 
         case "2":
           console.log("작가님 거래 예약 신청 완료");
-          setTrade("작가님이 계약을 희망중!")
-          setButtonText("작가님이 계약을 희망중! 계약 계속하러가기")
+          setTrade("작가님이 계약을 희망중!");
+          setButtonText("작가님이 계약을 희망중! 계약 계속하러가기");
           break;
 
         case "3":
           console.log("계약 확정");
-          setTrade("계약 확정")
-          setButtonText("계약 확정 진행중")
+          setTrade("계약 확정");
+          setButtonText("계약 확정 진행중");
 
           break;
 
@@ -58,6 +57,7 @@ function ProductCard({
     }
   }, []);
 
+  //props로 받은 id로 작품마다 작품 개별 페이지로 이동하도록
   const pageChange = () => {
     switch (page) {
       case "mypage":
@@ -73,12 +73,12 @@ function ProductCard({
         break;
     }
 
-    switch (tradeState){
-      case '2':
-      if (page === "mypage2"){
-        navigate(`/offlineContract_user/${id}/${trade_user_id}`);
-      }
-      break;
+    switch (tradeState) {
+      case "2":
+        if (page === "mypage2") {
+          navigate(`/offlineContract_user/${id}/${trade_user_id}`);
+        }
+        break;
 
       default:
         break;
@@ -106,21 +106,13 @@ function ProductCard({
         )}
       </div>
 
-      <Button
+      <button
         className="container__detail-btn"
         variant="outline-primary"
-        onClick={
-          () => pageChange()
-          //page == "mypage"
-          //</div>  ? () => navigate(`/detailPainter/${id}`)
-          //  : () => navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
-          // 작가 마이페이지에서 클릭하면 작가 작품상세페이지로 이동하도록!!
-          // 일반 작품상세페이지로 넘어갈때 tradeState를 넘겨줌
-        }
-        //props로 받은 id로 작품마다 작품 개별 페이지로 이동하도록
+        onClick={() => pageChange()}
       >
         {buttonText}
-      </Button>
+      </button>
     </div>
   );
 }

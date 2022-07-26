@@ -32,6 +32,8 @@ function Login() {
     if (Id.length === 0 || Password.length === 0) {
       alert("ID와 비밀번호를 모두 입력해주세요");
       return;
+      //return이 있어야 로그인요청으로 더이상 진행 안됨.
+      //없으면 alert띄우고 로그인 진행돼버림.
     }
     let body = {
       user_id: Id,
