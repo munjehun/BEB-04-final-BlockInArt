@@ -7,7 +7,6 @@ function Login() {
   const [Id, setId] = useState("");
   const [Password, setPassword] = useState("");
   const navigate = useNavigate();
-  // const [, setCookie] = useCookies();
   const user_id = JSON.parse(sessionStorage.getItem("user_id"));
 
   const onIdHandler = (event) => {
@@ -33,6 +32,8 @@ function Login() {
     if (Id.length === 0 || Password.length === 0) {
       alert("ID와 비밀번호를 모두 입력해주세요");
       return;
+      //return이 있어야 로그인요청으로 더이상 진행 안됨.
+      //없으면 alert띄우고 로그인 진행돼버림.
     }
     let body = {
       user_id: Id,
@@ -64,19 +65,14 @@ function Login() {
         );
         // string화 시킨 것을 다시 json화
 
-        console.log(user_id);
-        console.log(user_artistname);
+        // console.log(user_id);
+        // console.log(user_artistname);
 
         //로그인 완료 후 메인으로 가기
         navigate("/");
       })
       .catch((err) => {
         console.log(err);
-        if (err.response.data === "잘못된 비밀번호 입니다.")
-          alert("잘못된 비밀번호입니다", "error");
-        else if (err.response.data === "계정이 존재하지 않습니다.")
-          alert("계정이 존재하지 않습니다", "error");
-        else alert("아이디 또는 비밀번호를 잘못 입력하셨습니다.");
       });
   };
 

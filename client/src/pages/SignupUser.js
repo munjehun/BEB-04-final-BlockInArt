@@ -46,8 +46,8 @@ function SignupUser() {
         withCredentials: true,
       })
       .then((res) => {
-        //회원가입 완료 후 메인페이지로 가기
-        navigate("/");
+        //회원가입 완료 후 로그인페이지로 이동
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err);
@@ -56,9 +56,6 @@ function SignupUser() {
 
   //중복검사
   const onDuplicateCheckHandler = () => {
-    let body = {
-      user_id: Id,
-    };
     axios
       .request({
         method: "POST",
@@ -68,7 +65,7 @@ function SignupUser() {
       })
       .then((res) => {
         const data = res.data.message;
-        if (data == "already in use") {
+        if (data === "already in use") {
           alert("이미 사용중인 아이디입니다.");
         } else {
           alert("사용 가능한 아이디입니다.");
