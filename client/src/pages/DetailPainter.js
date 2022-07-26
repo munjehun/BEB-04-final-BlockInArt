@@ -23,9 +23,18 @@ function DetailPainter() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data);
+        console.log(res.data.data);
         setRequests(res.data.data);
         setPaintingInfo(res.data.artInfo);
+        //작가가 예약중인 상태라면 계약페이지로 넘어가도록
+        if (
+          res.data.data.trade_state == "2" ||
+          res.data.data.trade_state == "3"
+        ) {
+          navigate(
+            `/contractReservation/${res.data.data.trade_art_id}/${res.data.data.trade_user_id}`
+          );
+        }
       })
       .catch((err) => {
         console.log(err);
