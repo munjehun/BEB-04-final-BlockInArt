@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Spinner } from "react-bootstrap";
+import Spinner from "./Spinner.js";
 
 function OfflineContractCheck({ user_artistname, trade_user_id, id }) {
   const navigate = useNavigate();
@@ -56,8 +56,8 @@ function OfflineContractCheck({ user_artistname, trade_user_id, id }) {
         ) : (
           <button
             onClick={() => {
-              confirmContract_painter();
               setLoading(true);
+              confirmContract_painter();
             }}
           >
             계약하기
