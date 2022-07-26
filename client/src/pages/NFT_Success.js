@@ -21,7 +21,7 @@ function NFT_Success() {
         </div>
         <div className="submit">
           <button onClick={() => navigate("/")}>HOME</button>
-          <button onClick={() => navigate("/mypage")}>마이페이지로 가기</button>
+          <button onClick={() => navigate("/mypage1")}>마이페이지</button>
         </div>
       </div>
     </div>
