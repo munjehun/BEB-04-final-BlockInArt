@@ -22,7 +22,7 @@ function ProductCard({
     console.log("tradestate: ", trade_state);
 
     setTradeState(trade_state);
-    if (page === "general_mypage" || page === "mypage") {
+    if (page === "mypage2") {
       console.log("trade_state : ", trade_state);
       switch (trade_state) {
         case "1":
@@ -52,6 +52,36 @@ function ProductCard({
       }
     }
 
+    if (page === "mypage") {
+      console.log("trade_state : ", trade_state);
+      switch (trade_state) {
+        case "1":
+          console.log("사용자 -> 작가 요청옴");
+
+          setTrade("계약요청 완료");
+          setButtonText("작가님이 요청을 확인중!");
+          break;
+
+        case "2":
+          console.log("작가님 거래 예약 신청 완료");
+          setTrade("작가님이 계약을 희망중!")
+          setButtonText("작가님이 계약을 희망중! 계약 계속하러가기")
+          break;
+
+        case "3":
+          console.log("계약 확정");
+          setTrade("계약 확정")
+          setButtonText("계약 확정 진행중")
+
+          break;
+
+        default:
+          console.log("not case in trade_state");
+          setButtonText("자세히 보기");
+          break;
+      }
+    }
+
     if (page === "main") {
       setButtonText("자세히 보기");
     }
@@ -60,8 +90,8 @@ function ProductCard({
   //props로 받은 id로 작품마다 작품 개별 페이지로 이동하도록
   const pageChange = () => {
     switch (page) {
-      case "mypage":
-        navigate(`/detailPainter/${id}`);
+      case "mypage": //작가 마이페이지에서 작가전용 개별 작품 페이지로 이동
+        navigate(`/detailPainter/${id}`, { state: { tradeState: tradeState } });
         break;
 
       case "main":
@@ -94,7 +124,7 @@ function ProductCard({
       <div className="price_painter">
         {page === "mypage" ? ( //작가마이페이지에 출력될 때만 요청 수 가 나오도록
           <div>계약 요청 수 : {requests}</div>
-        ) : page === "general_mypage" ? (
+        ) : page === "mypage2" ? (
           <div>{trade}</div>
         ) : (
           <>
