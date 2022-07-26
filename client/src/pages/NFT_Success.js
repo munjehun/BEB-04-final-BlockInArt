@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./NFT_Success.css";
 import { useNavigate } from "react-router-dom";
-import Loading from "../components/Loading";
 
 function NFT_Success() {
   const navigate = useNavigate();
@@ -25,7 +24,6 @@ function NFT_Success() {
           <button onClick={() => navigate("/mypage")}>마이페이지로 가기</button>
         </div>
       </div>
-      {isLoading ? <Loading /> : ""}
     </div>
   );
 }
