@@ -10,6 +10,7 @@ function SignupPainter() {
   const [Password, setPassword] = useState("");
   const [PasswordConfirm, setPasswordConfirm] = useState("");
   const [artistname, setArtistname] = useState("");
+  const [btnDisabled, setBtnDisabled] = useState(true);
 
   const onIdHandler = (event) => {
     setId(event.currentTarget.value);
@@ -25,8 +26,8 @@ function SignupPainter() {
   };
 
   const onSubmitHandler = () => {
-    if (Id.length === 0 || Password.length === 0) {
-      alert("ID와 비밀번호를 모두 입력해주세요");
+    if (Id.length === 0 || Password.length === 0 || artistname.length === 0) {
+      alert("ID와 비밀번호, 작가명을 모두 입력해주세요");
       return;
     }
 
@@ -42,7 +43,7 @@ function SignupPainter() {
       user_artistname: artistname,
     };
 
-    //로그인 요청
+    //회원가입 요청
     axios
       .request({
         method: "POST",
@@ -51,7 +52,7 @@ function SignupPainter() {
         withCredentials: true,
       })
       .then((res) => {
-        //회원가입 완료 후 로그인페이지로 이동
+        alert("회원가입이 완료되었습니다. 로그인 해 주세요.");
         navigate("/login");
       })
       .catch((err) => {
@@ -59,7 +60,7 @@ function SignupPainter() {
       });
   };
 
-  //중복검사
+  //중복 체크
   const onDuplicateCheckHandler = () => {
     axios
       .request({
@@ -74,6 +75,7 @@ function SignupPainter() {
           alert("이미 사용중인 아이디입니다.");
         } else {
           alert("사용 가능한 아이디입니다.");
+          setBtnDisabled(false);
         }
       });
   };
@@ -88,10 +90,18 @@ function SignupPainter() {
             <input
               type="text"
               value={Id}
-              onChange={onIdHandler}
+              onChange={(e) => {
+                onIdHandler(e);
+                setBtnDisabled(true); //추가로 입력하면 다시 가입하기 버튼 비활성화
+              }}
               placeholder="ID"
             />
             <button onClick={onDuplicateCheckHandler}>중복 체크</button>
+          </div>
+          <div>
+            <div className="duplicateCheck-ment">
+              중복체크가 되어야 가입하기 버튼이 활성화 됩니다.
+            </div>
           </div>
           {/* 비밀번호 입력 칸 */}
           <input
@@ -117,7 +127,11 @@ function SignupPainter() {
         </div>
         {/* 회원가입 신청 버튼 */}
         <div className="submit">
-          <button type="submit" onClick={onSubmitHandler}>
+          <button
+            type="submit"
+            onClick={onSubmitHandler}
+            disabled={btnDisabled}
+          >
             가입하기
           </button>
         </div>
