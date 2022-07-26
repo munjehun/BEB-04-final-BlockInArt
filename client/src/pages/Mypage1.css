@@ -1,3 +1,9 @@
+.mypage1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .mypage1 .작가님이신가요 {
   font-weight: bold;
   font-size: 30px;
@@ -31,21 +37,10 @@
     border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 
-.mypage1 .container__detail-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-}
-
 .mypage1 .pictures_list {
-  display: grid;
-  /* grid 속성 선언 */
-  grid-template-columns: repeat(3, minmax(400px, 1fr));
-  /* 가로로 minmax 400px 인 grid를 3번 반복 */
-  grid-gap: 100px 50px;
-  /* grid간 간격 */
-  padding: 50px;
-  width: 100%;
-  padding-top: 100px;
+  display: flex;
+  flex-flow: row wrap;
+  margin: 50px 0 100px;
+  /* align-items: center; */
+  width: 1200px;
 }

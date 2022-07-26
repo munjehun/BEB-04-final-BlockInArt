@@ -33,6 +33,20 @@ function Workregister() {
   };
 
   const onSubmitHandler = () => {
+    if (
+      Name.length === 0 ||
+      Size.length === 0 ||
+      Genre.length === 0 ||
+      Image.length === 0 ||
+      Desc.length === 0 ||
+      Price.length === 0
+    ) {
+      alert("정보를 모두 입력해 주세요.");
+      return;
+      //return이 있어야 작품등록으로 더이상 진행 안됨.
+      //없으면 alert띄우고 작품등록 진행돼버림.
+    }
+
     let body = {
       art_name: Name,
       art_size: Size,
@@ -98,7 +112,6 @@ function Workregister() {
                 placeholder="작품사진의 주소를 입력하세요"
                 rows="3"
                 cols="35"
-
                 type="text"
                 // accept="image/*"
                 value={Image}
