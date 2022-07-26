@@ -7,6 +7,7 @@ function OfflineContractCheck({ user_artistname, trade_user_id, id }) {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
+  //계약하기 API
   const confirmContract_painter = () => {
     axios
       .request({
