@@ -14,11 +14,14 @@ async function mintNFT(owner_id, buyer_id) {
 
       const jUrl = await ipfsUpload(json);
 
-      const account = await caver.klay.accounts.wallet.add(
-        "0xbe4741d99e691eeec76d9ee4519355542d283e81acc074ea8c4ccc0c0e0b4cc3"
-      );
 
-      console.log(account.address);
+      let account = await caver.klay.accounts.wallet.getAccount('0x505c94083EB4DAe6a2f92cE485a3335F631Be77C');
+     
+      if(account === undefined){
+        account = await caver.klay.accounts.wallet.add(
+          "0xbe4741d99e691eeec76d9ee4519355542d283e81acc074ea8c4ccc0c0e0b4cc3"
+        );
+      }
 
       const tokenContract = await new caver.klay.Contract(abi, contractAddr, {
         from: account.address.toString(),
