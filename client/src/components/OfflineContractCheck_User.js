@@ -2,32 +2,28 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
-
 function OfflineContractCheckUser({ user_artistname, id, trade_user_id }) {
-
   const navigate = useNavigate();
   const contractUser = () => {
     axios
-    .request({
-      method: "POST",
-      url: "https://localhost:4000/api/trade/general/confirmContract",
-      data: { id : id},
-      withCredentials: true,
-    })
-    .then((res) => {
-      console.log(res);
-      console.log("trade_user_id : ", trade_user_id)
-      //window.location.replace(`/offlineContract_user/${trade_user_id}`)
-      navigate(`/offlineContract_user/${id}/${trade_user_id}`)
-    })
-    .catch((err) => {
-      console.log(err);
-    });
-    
-  }
-  
+      .request({
+        method: "POST",
+        url: "https://localhost:4000/api/trade/general/confirmContract",
+        data: { id: id },
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res);
+        console.log("trade_user_id : ", trade_user_id);
+        window.location.replace(`/offlineContract_user/${id}/${trade_user_id}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
-    <div className="offlineContract_container"> 
+    <div className="offlineContract_container">
       <div className="checklist">
         <label>
           ▪️ [ {user_artistname} ]님과 [ {trade_user_id} ]님이 오프라인에서 현재
@@ -53,13 +49,7 @@ function OfflineContractCheckUser({ user_artistname, id, trade_user_id }) {
         </label>
       </div>
       <div className="contract--button">
-        <button onClick={
-          ()=> contractUser()
-          }> 
-
-          계약하기
-
-        </button>
+        <button onClick={() => contractUser()}>계약하기</button>
       </div>
     </div>
   );
