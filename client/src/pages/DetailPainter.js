@@ -25,7 +25,7 @@ function DetailPainter() {
       .then((res) => {
         console.log(res.data);
         setRequests(res.data.data);
-        setPaintingInfo(res.data.artinfo);
+        setPaintingInfo(res.data.artInfo);
       })
       .catch((err) => {
         console.log(err);

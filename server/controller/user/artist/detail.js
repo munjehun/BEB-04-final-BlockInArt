@@ -41,7 +41,7 @@ module.exports = {
             message: "get artist detail success",
             count : count,
             data: rows,
-            artinfo: artInfo.dataValues,
+            artInfo: artInfo.dataValues,
           });
       } catch (error) {
           console.log(error)
