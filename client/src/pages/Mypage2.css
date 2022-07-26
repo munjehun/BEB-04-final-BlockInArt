@@ -34,16 +34,6 @@
   justify-content: center;
 }
 
-.mypage2 .picture_name {
-  text-align: center;
-  margin: 10px;
-  font-size: 1.5rem;
-}
-
-.mypage2 .container__detail-btn {
-  width: 100%;
-}
-
 .mypage2 .wellcome_ment > div {
   display: inline-block;
   width: 50%;
