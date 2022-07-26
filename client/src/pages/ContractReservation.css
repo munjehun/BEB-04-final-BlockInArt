@@ -1,9 +1,9 @@
-.painter_detail {
+.contract_reservation {
   display: flex;
   flex-direction: column;
 }
 
-.painter_detail .title {
+.contract_reservation .title {
   height: 100px;
   display: flex;
   justify-content: center;
@@ -13,47 +13,53 @@
   margin: 30px 0 10px 0;
 }
 
-.painter_detail .container {
+.contract_reservation .container {
   display: flex;
   justify-content: center;
 }
 
-.painter_detail .picture {
+.contract_reservation .picture {
   margin: 20px;
   width: 300px;
 }
 
-.painter_detail .purchase_requests {
+.contract_reservation .purchase_requests {
   width: 700px;
   padding: 0 20px;
-}
-
-.painter_detail .purchase_requests > ul {
   display: flex;
-  align-items: center;
-  text-align: center;
-  margin-top: 20px;
-  list-style: none;
-  background-color: aliceblue;
-  border: none;
-  border-radius: 30px;
-}
-.painter_detail .purchase_requests > ul > li {
-  flex: 1 1 auto;
 }
 
-.painter_detail button {
-  width: 140px;
-  height: 40px;
+.contract_reservation .purchase_requests > div {
+  flex: 1 1 0;
+}
+
+.contract_reservation .purchase_requests .contract_requester {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+}
+
+.contract_reservation .purchase_requests > div:last-child {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contract_reservation button {
+  width: 250px;
+  height: 50px;
   border: none;
   background-color: rgb(0, 158, 66);
-  border-radius: 20px;
+  border-radius: 30px;
   color: white;
-  font-size: 17px;
+  font-size: 18px;
   box-shadow: inset 0px 0px 0px 0px #a4e271;
+  margin: 30px;
 }
 
-.painter_detail button:hover {
+.contract_reservation button:hover {
   color: green;
   background-color: white;
   border: 2px solid green;
