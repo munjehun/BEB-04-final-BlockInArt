@@ -1,9 +1,12 @@
 import axios from "axios";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Spinner } from "react-bootstrap";
 
 function OfflineContractCheck({ user_artistname, trade_user_id, id }) {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
   const confirmContract_painter = () => {
     axios
       .request({
@@ -14,6 +17,7 @@ function OfflineContractCheck({ user_artistname, trade_user_id, id }) {
       })
       .then((res) => {
         console.log(res.data.message);
+        navigate("/NFT_Success");
       })
       .catch((err) => {
         console.log(err);
@@ -47,14 +51,18 @@ function OfflineContractCheck({ user_artistname, trade_user_id, id }) {
         </label>
       </div>
       <div className="contract--button">
-        <button
-          onClick={() => {
-            confirmContract_painter();
-            navigate("/NFT_Success");
-          }}
-        >
-          계약하기
-        </button>
+        {loading ? (
+          <Spinner />
+        ) : (
+          <button
+            onClick={() => {
+              confirmContract_painter();
+              setLoading(true);
+            }}
+          >
+            계약하기
+          </button>
+        )}
         {/* 모든 체크박스 체크했을때만 넘어가도록! */}
       </div>
     </div>
