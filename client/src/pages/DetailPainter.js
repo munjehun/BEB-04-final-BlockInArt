@@ -74,9 +74,9 @@ function DetailPainter() {
         </div>
         <div className="purchase_requests">
           {art_state ? ( //계약 완료됐을 때
-            <div>계약 완료됨</div>
+            <div className="contract_complete">계약이 완료되었습니다</div>
           ) : requests.length == 0 ? ( //계약 요청이 없을 때
-            <div>들어온 요청이 없습니다</div>
+            <div className="no_request">요청된 계약이 없습니다</div>
           ) : (
             <>
               {requests.map((request) => (
