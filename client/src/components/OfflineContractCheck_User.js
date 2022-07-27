@@ -1,9 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function OfflineContractCheckUser({ user_artistname, id, trade_user_id }) {
   const navigate = useNavigate();
+  const [checkedList, setCheckedList] = useState([]);
+  const [allChecked, setAllChecked] = useState(false);
+  const [art_owner, setArt_owner] = useState("");
+
+  const onCheckedElement = (checked, item) => {
+    if (checked) {
+      setCheckedList([...checkedList, item]);
+      //체크된 것 checkedList 에 추가
+    } else if (!checked) {
+      setCheckedList(checkedList.filter((el) => el !== item));
+      //체크 안 된 것 checkedList에서 제거
+    }
+  };
+
+  //체크박스 유효성 검사
+  useEffect(() => {
+    getPaintingInfo();
+    if (checkedList.length === 4) {
+      //4개 모두 체크돼야 계약하기 버튼 누를 수 있도록
+      setAllChecked(true);
+    } else if (checkedList.length !== 4) {
+      setAllChecked(false);
+    }
+  }, [checkedList]); //체크 할 때마다 유효성검사
+
+  const getPaintingInfo = () => {
+    axios
+      .request({
+        method: "POST",
+        url: "https://localhost:4000/api/art/artDetail",
+        data: { id: id },
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res.data.data);
+        setArt_owner(res.data.data.art_owner);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   const contractUser = () => {
     axios
       .request({
@@ -28,28 +70,64 @@ function OfflineContractCheckUser({ user_artistname, id, trade_user_id }) {
         <label>
           ▪️ [ {user_artistname} ]님과 [ {trade_user_id} ]님이 오프라인에서 현재
           작품검수를 완료했나요?&nbsp;&nbsp;
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            id="checkBox_1"
+            onChange={(e) => {
+              onCheckedElement(e.target.checked, e.target.id);
+            }}
+            checked={checkedList.includes("checkBox_1") ? true : false}
+          />
         </label>
         <label>
           ▪️ [ {user_artistname} ]님과 [ {trade_user_id} ]님 상호간 작품 선수금
           지급이 진행되었나요?&nbsp;&nbsp;
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            id="checkBox_2"
+            onChange={(e) => {
+              onCheckedElement(e.target.checked, e.target.id);
+            }}
+            checked={checkedList.includes("checkBox_2") ? true : false}
+          />
         </label>
         <label>
           ▪️ [ {user_artistname} ]님과 [ {trade_user_id} ]님 모두 현재
           오프라인에서 대면으로 함께 계신가요?&nbsp;&nbsp;
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            id="checkBox_3"
+            onChange={(e) => {
+              onCheckedElement(e.target.checked, e.target.id);
+            }}
+            checked={checkedList.includes("checkBox_3") ? true : false}
+          />
         </label>
       </div>
       <div className="contractDetail">계약 내용</div>
       <div className="contractDetail--check">
         <label>
           계약 내용을 모두 확인하셨나요?&nbsp;&nbsp;
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            id="checkBox_4"
+            onChange={(e) => {
+              onCheckedElement(e.target.checked, e.target.id);
+            }}
+            checked={checkedList.includes("checkBox_4") ? true : false}
+          />{" "}
         </label>
       </div>
       <div className="contract--button">
-        <button onClick={() => contractUser()}>계약하기</button>
+        <button
+          disabled={!allChecked}
+          //모든 항목 체크(true)되면 비활성화가 비활성(false)
+          //모든 항목 체크안(true)되면 비활성화가 활성(true)
+
+          onClick={() => contractUser()}
+        >
+          계약하기
+        </button>
       </div>
     </div>
   );
