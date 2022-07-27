@@ -23,7 +23,7 @@ function DetailPainter() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data.data);
+        console.log("들어온 요청들", res.data.data);
         setRequests(res.data.data);
         setPaintingInfo(res.data.artInfo);
         //작가가 예약중인 상태라면 계약페이지로 넘어가도록
@@ -69,6 +69,7 @@ function DetailPainter() {
           <img width={300} src={paintingInfo.art_image} />
         </div>
         <div className="purchase_requests">
+          {requests.length == 0 ? <div>들어온 요청이 없습니다</div> : <></>}
           {requests.map((request) => (
             <ul key={request.id}>
               <li className="purchase_request_username">
