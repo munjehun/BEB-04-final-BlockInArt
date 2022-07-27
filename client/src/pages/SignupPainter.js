@@ -9,25 +9,24 @@ function SignupPainter() {
   const [Id, setId] = useState("");
   const [Password, setPassword] = useState("");
   const [PasswordConfirm, setPasswordConfirm] = useState("");
+  const [Name, setName] = useState("");
+  const [Birth, setBirth] = useState("");
   const [artistname, setArtistname] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(true);
 
-  const onIdHandler = (event) => {
-    setId(event.currentTarget.value);
-  };
-  const onPasswordHandler = (event) => {
-    setPassword(event.currentTarget.value);
-  };
-  const onPasswordConfirmHandler = (event) => {
-    setPasswordConfirm(event.currentTarget.value);
-  };
-  const onArtistnameHandler = (event) => {
-    setArtistname(event.currentTarget.value);
-  };
-
   const onSubmitHandler = () => {
-    if (Id.length === 0 || Password.length === 0 || artistname.length === 0) {
-      alert("ID와 비밀번호, 작가명을 모두 입력해주세요");
+    //유효성 검사
+    if (
+      Id.length === 0 ||
+      Password.length === 0 ||
+      Name.length === 0 ||
+      Birth.length === 0 ||
+      artistname === 0
+    ) {
+      alert("정보를 모두 입력해주세요");
+      return;
+    } else if (Birth.length !== 6) {
+      alert("생년월일을 6자리 형식으로 입력해 주세요.  ex)950123");
       return;
     }
 
@@ -91,7 +90,7 @@ function SignupPainter() {
               type="text"
               value={Id}
               onChange={(e) => {
-                onIdHandler(e);
+                setId(e.currentTarget.value);
                 setBtnDisabled(true); //추가로 입력하면 다시 가입하기 버튼 비활성화
               }}
               placeholder="ID"
@@ -107,21 +106,45 @@ function SignupPainter() {
           <input
             type="password"
             value={Password}
-            onChange={onPasswordHandler}
+            onChange={(e) => {
+              setPassword(e.currentTarget.value);
+            }}
             placeholder="Password"
           />
           {/* 비밀번호 확인 입력 칸 */}
           <input
             type="password"
             value={PasswordConfirm}
-            onChange={onPasswordConfirmHandler}
+            onChange={(e) => {
+              setPasswordConfirm(e.currentTarget.value);
+            }}
             placeholder="Confirm Password "
+          />
+          {/* 이름 입력 칸 */}
+          <input
+            type="text"
+            value={Name}
+            onChange={(e) => {
+              setName(e.currentTarget.value);
+            }}
+            placeholder="실제 본인 실명"
+          />
+          {/* 생년월일 입력 칸 */}
+          <input
+            type="number"
+            value={Birth}
+            onChange={(e) => {
+              setBirth(e.currentTarget.value);
+            }}
+            placeholder="생년월일 6자리"
           />
           {/* 작가명 입력 칸 */}
           <input
             type="text"
             value={artistname}
-            onChange={onArtistnameHandler}
+            onChange={(e) => {
+              setArtistname(e.currentTarget.value);
+            }}
             placeholder="작가 이름"
           />
         </div>

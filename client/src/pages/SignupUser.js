@@ -9,21 +9,22 @@ function SignupUser() {
   const [Id, setId] = useState("");
   const [Password, setPassword] = useState("");
   const [PasswordConfirm, setPasswordConfirm] = useState("");
+  const [Name, setName] = useState("");
+  const [Birth, setBirth] = useState("");
   const [btnDisabled, setBtnDisabled] = useState(true);
 
-  const onIdHandler = (event) => {
-    setId(event.currentTarget.value);
-  };
-  const onPasswordHandler = (event) => {
-    setPassword(event.currentTarget.value);
-  };
-  const onPasswordConfirmHandler = (event) => {
-    setPasswordConfirm(event.currentTarget.value);
-  };
-
   const onSubmitHandler = () => {
-    if (Id.length === 0 || Password.length === 0) {
-      alert("ID와 비밀번호를 모두 입력해주세요");
+    //유효성 검사
+    if (
+      Id.length === 0 ||
+      Password.length === 0 ||
+      Name.length === 0 ||
+      Birth.length === 0
+    ) {
+      alert("정보를 모두 입력해주세요");
+      return;
+    } else if (Birth.length !== 6) {
+      alert("생년월일을 6자리 형식으로 입력해 주세요.  ex)950123");
       return;
     }
 
@@ -36,6 +37,8 @@ function SignupUser() {
     let body = {
       user_id: Id,
       user_pass: Password,
+      user_name: Name,
+      user_birth: Birth,
     };
 
     //회원가입 요청
@@ -84,7 +87,10 @@ function SignupUser() {
             <input
               type="text"
               value={Id}
-              onChange={onIdHandler}
+              onChange={(e) => {
+                setId(e.currentTarget.value);
+                setBtnDisabled(true); //추가로 입력하면 다시 가입하기 버튼 비활성화
+              }}
               placeholder="ID"
             />
             <button onClick={onDuplicateCheckHandler}>중복 체크</button>
@@ -98,15 +104,37 @@ function SignupUser() {
           <input
             type="password"
             value={Password}
-            onChange={onPasswordHandler}
+            onChange={(e) => {
+              setPassword(e.currentTarget.value);
+            }}
             placeholder="Password"
           />
           {/* 비밀번호 확인 입력 칸 */}
           <input
             type="password"
             value={PasswordConfirm}
-            onChange={onPasswordConfirmHandler}
+            onChange={(e) => {
+              setPasswordConfirm(e.currentTarget.value);
+            }}
             placeholder="Confirm Password "
+          />
+          {/* 이름 입력 칸 */}
+          <input
+            type="text"
+            value={Name}
+            onChange={(e) => {
+              setName(e.currentTarget.value);
+            }}
+            placeholder="실제 본인 실명"
+          />
+          {/* 생년월일 입력 칸 */}
+          <input
+            type="number"
+            value={Birth}
+            onChange={(e) => {
+              setBirth(e.currentTarget.value);
+            }}
+            placeholder="생년월일 6자리"
           />
         </div>
         {/* 회원가입 신청 버튼 */}
