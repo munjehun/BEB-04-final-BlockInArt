@@ -145,7 +145,7 @@ function SignupPainter() {
             onChange={(e) => {
               setArtistname(e.currentTarget.value);
             }}
-            placeholder="작가 이름"
+            placeholder="작가명"
           />
         </div>
         {/* 회원가입 신청 버튼 */}
