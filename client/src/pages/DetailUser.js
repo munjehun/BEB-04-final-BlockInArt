@@ -11,6 +11,7 @@ function DetailUser() {
   const [paintingInfo, setPaintingInfo] = useState([]);
   const user_artistname = JSON.parse(sessionStorage.getItem("user_artistname"));
   const [buttonState, setButtonState] = useState("");
+  const [art_state, setArt_state] = useState("");
   const { state } = useLocation();
 
   useEffect(() => {
@@ -18,6 +19,7 @@ function DetailUser() {
     getPaintingInfo();
   }, []);
 
+  // 그림 정보 받아오는 API
   const getPaintingInfo = () => {
     axios
       .request({
@@ -29,6 +31,7 @@ function DetailUser() {
       .then((res) => {
         console.log("작품 정보 : ", res.data.data);
         setPaintingInfo(res.data.data);
+        setArt_state(res.data.data.art_state);
       })
       .catch((err) => {
         console.log(err);
@@ -93,11 +96,15 @@ function DetailUser() {
         break;
 
       case "2":
-        setButtonState("계약 진행중...");
+        setButtonState("계약 진행중");
         break;
 
       case "3":
         setButtonState("작가님이 계약 확정 진행중");
+        break;
+
+      case "4":
+        setButtonState("계약 완료");
         break;
 
       default:
@@ -141,7 +148,9 @@ function DetailUser() {
             {user_artistname ? (
               <></>
             ) : (
-              <button onClick={purchaseRequest}>{buttonState}</button>
+              <button onClick={() => purchaseRequest()} disabled={art_state}>
+                {buttonState}
+              </button>
             )}
           </div>
         </div>

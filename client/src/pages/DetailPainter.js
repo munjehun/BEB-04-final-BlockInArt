@@ -8,6 +8,7 @@ function DetailPainter() {
   const { id } = useParams(); // useParams() = 파라미터 값 받아오는 함수
   const [paintingInfo, setPaintingInfo] = useState([]);
   const [requests, setRequests] = useState([]);
+  const [art_state, setArt_state] = useState("");
 
   useEffect(() => {
     getPaintings();
@@ -23,7 +24,8 @@ function DetailPainter() {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res.data.data);
+        console.log(res.data.artInfo);
+        setArt_state(res.data.artInfo.art_state);
         setRequests(res.data.data);
         setPaintingInfo(res.data.artInfo);
         //작가가 예약중인 상태라면 계약페이지로 넘어가도록
@@ -55,6 +57,7 @@ function DetailPainter() {
       })
       .then((res) => {
         console.log(res);
+        alert(`${trade_user_id}님과의 계약이 예약되었습니다.`);
       })
       .catch((err) => {
         console.log(err);
@@ -69,24 +72,30 @@ function DetailPainter() {
           <img width={300} src={paintingInfo.art_image} />
         </div>
         <div className="purchase_requests">
-          {requests.map((request) => (
-            <ul key={request.id}>
-              <li className="purchase_request_username">
-                {request.trade_user_id} 님과 계약
-              </li>
-              {/* 버튼을 누르면 해당 유저와의 계약 진행,취소 페이지로 넘어가도록, 예약승인 처리도 하도록*/}
-              <button
-                onClick={() => {
-                  navigate(
-                    `/contractReservation/${paintingInfo.id}/${request.trade_user_id}`
-                  ); //navigate에서 상태넘겨주기 navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
-                  getReservation(request.trade_user_id);
-                }}
-              >
-                예약하기
-              </button>
-            </ul>
-          ))}
+          {art_state ? (
+            <div>계약 완료됨</div>
+          ) : (
+            <>
+              {requests.map((request) => (
+                <ul key={request.id}>
+                  <li className="purchase_request_username">
+                    {request.trade_user_id} 님과 계약
+                  </li>
+                  {/* 버튼을 누르면 해당 유저와의 계약 진행,취소 페이지로 넘어가도록, 예약승인 처리도 하도록*/}
+                  <button
+                    onClick={() => {
+                      navigate(
+                        `/contractReservation/${paintingInfo.id}/${request.trade_user_id}`
+                      ); //navigate에서 상태넘겨주기 navigate(`/detailUser/${id}`, {state: {tradeState:tradeState}})
+                      getReservation(request.trade_user_id);
+                    }}
+                  >
+                    예약하기
+                  </button>
+                </ul>
+              ))}
+            </>
+          )}
         </div>
       </div>
     </div>

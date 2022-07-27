@@ -35,7 +35,7 @@ function Main() {
     <div className="main">
       {/* 일반 유저일때는 작품등록하기 버튼이 안 보이도록*/}
       {user_id && user_artistname == null ? (
-        <div>일반 유저 로그인상태의 메인페이지 입니다</div>
+        <div>작품을 구매하고 계약서 NFT를 발행받으세요</div>
       ) : (
         <div className="wellcome_ment">
           <div className="작가님이신가요">

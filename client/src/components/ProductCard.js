@@ -64,14 +64,14 @@ function ProductCard({
       switch (trade_state) {
         case "1":
           console.log("계약요청");
-          setTrade("계약요청 완료");
-          setButtonText("작가님이 요청 확인중");
+          setTrade("작가님이 요청 확인중");
+          setButtonText("계약 예약 요청 완료");
           break;
 
         case "2":
-          console.log("작가님 거래 예약 신청 완료");
+          console.log("작가님 거래 예약 완료");
           setTrade("작가님이 계약 희망중");
-          setButtonText("계약 계속하러가기");
+          setButtonText("계약 계속 진행");
           break;
 
         case "3":
@@ -82,7 +82,7 @@ function ProductCard({
 
         case "4":
           console.log("계약 완료");
-          setTrade("계약 완료");
+          setTrade("　");
           setButtonText("계약 완료");
           break;
 

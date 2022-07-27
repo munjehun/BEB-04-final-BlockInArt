@@ -115,7 +115,7 @@ function OfflineContractCheckUser({ user_artistname, id, trade_user_id }) {
               onCheckedElement(e.target.checked, e.target.id);
             }}
             checked={checkedList.includes("checkBox_4") ? true : false}
-          />{" "}
+          />
         </label>
       </div>
       <div className="contract--button">
