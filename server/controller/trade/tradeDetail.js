@@ -16,6 +16,8 @@ module.exports = {
 
       const trade_state = tradeInfo.dataValues.trade_state.toString();
 
+      const art_name = tradeInfo.dataValues.Art.art_name.toString();
+
       const art_owner = tradeInfo.dataValues.Art.art_owner.toString();
 
       const art_price = tradeInfo.dataValues.Art.art_price.toString();
@@ -38,6 +40,7 @@ module.exports = {
         message: 'get tradeDetail success',
         trade_user_id: trade_user_id,
         trade_state: trade_state,
+        art_name: art_name,
         art_owner: art_owner,
         art_price: art_price,
         owner_name: owner_name,
