@@ -28,7 +28,7 @@ function SignupUser() {
       return;
     }
 
-    //비밀번호 유효성 검사
+    //비밀번호 확인 유효성 검사
     if (Password !== PasswordConfirm) {
       alert("비밀번호 확인을 다시 입력해 주세요");
       return;
