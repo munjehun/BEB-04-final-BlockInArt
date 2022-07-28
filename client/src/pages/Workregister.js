@@ -49,10 +49,14 @@ function Workregister() {
         withCredentials: true,
       })
       .then((res) => {
+        alert("작품이 등록되었습니다.");
         navigate("/mypage1");
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.message);
+        if (err.message == "Request failed with status code 401") {
+          alert("로그인을 다시 해주세요.");
+        }
       });
   };
 
@@ -76,6 +80,7 @@ function Workregister() {
               작품 크기
               <input
                 type="text"
+                placeholder="ex) 20*20cm"
                 value={Size}
                 onChange={(e) => setSize(e.currentTarget.value)}
               />
