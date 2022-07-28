@@ -1,6 +1,8 @@
 const { Art } = require("../../models");
 const { User } = require("../../models");
 
+const ipfsImage = require("../../functions/ipfsImage");
+
 module.exports = {
   post: async (req, res) => {
     const {art_name, art_size, art_genre, art_image, art_desc, art_price} = req.body;
@@ -21,12 +23,14 @@ module.exports = {
 
       const user_artistname = userInfo.dataValues.user_artistname.toString();
 
+      const image_url = await ipfsImage(art_image);
+
       Art.create({
         art_user_id: userId,
         art_name: art_name,
         art_size: art_size,
         art_genre: art_genre,
-        art_image: art_image, 
+        art_image: image_url, 
         art_desc: art_desc,
         art_price: art_price,
         art_owner: user_id,
