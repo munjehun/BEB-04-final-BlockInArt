@@ -54,7 +54,7 @@ function Workregister() {
       })
       .catch((err) => {
         console.log(err.message);
-        if (err.message == "Request failed with status code 401") {
+        if (err.message === "Request failed with status code 401") {
           alert("로그인을 다시 해주세요.");
         }
       });
