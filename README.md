@@ -1,6 +1,7 @@
-# BEB-04-final-02
+# [블록인아트 소개페이지](https://underdogrev.notion.site/d92c44ebc5834383a3be65315850419a)
 
-블록인아트 로컬용 레포지입니다.
+블록인아트 로컬용 레포지입니다. 자세한 내용은 👆 클릭!
+[내가 만든 페이지들](https://underdogrev.notion.site/04372f6f88044faa9fc369c30ba028a7?v=e5e877eede7947d89812193b7ec97fa8) 👈에서'제훈 문'인 것들
 
 # Problem
 ## 비싼 작품과 가난한 화가
