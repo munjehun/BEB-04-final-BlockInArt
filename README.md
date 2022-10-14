@@ -2,9 +2,8 @@
 
 블록인아트 로컬용 레포지입니다.
 
+# Problem
 ## 비싼 작품과 가난한 화가
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/7000febb-8834-4c1c-a97e-1f7a8c754eb5/Untitled.png)
 
 한 작가의 작품이 높은 가격이 형성되기까지는 작가가 형성해온 수많은 배경이 뒷받침 되어야 합니다. 
 
@@ -18,13 +17,16 @@
 
 하지만 **한국**에서는 아직 이런 권리에 대한 **법적 보호가 없는 것**이 현실입니다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/504a497e-47aa-41f3-8264-ecbc816c0f48/Untitled.png)
+# Solution
 
-### 추급권이란?
+---
 
-추급권이란 작품의 **리셀차익**에 대한 일종의 **작가 로열티**입니다.
 
-추급권이 행사되면 미술작품의 재판매 시 **수익의 일부를 원작자에게 지급**하게 됩니다.
+### _추급권_이란?
+
+***추급권***이란 작품의 **리셀차익**에 대한 일종의 **작가 로열티**입니다.
+
+***추급권***이 행사되면 미술작품의 재판매 시 **수익의 일부를 원작자에게 지급**하게 됩니다.
 
 ### **추급권 자세히 알아보기**
 
@@ -38,17 +40,16 @@
 
 자세한 내용은 아래 국회 입법 조사처의 연구 보고서를 통해 확인하실 수 있습니다.
 
-**국회 입법 조사처 - 미술품 추급권(Resale Royalty Right)의 도입과 과제**
 
-[StreamDocs](http://drm.nars.go.kr:7003/sd/imageviewer?doc_id=1MvzSFDLD82&DocId=1MvzSFDLD82&documentId=&DOCUMENTID=&DOCUMENTID=&EdmUserId=datauser&ViewerYn=Y&type=S&fileName=KE5BUlPtmITslYjrtoTshJ0gODHtmLgtMjAxOTExMjEp66%2B47Iig7ZKIIOy2lOq4ieq2jChSZXNhbGUgUm95YWx0eSBSaWdodCnsnZgg64%2BE7J6F6rO8IOqzvOygnC5wZGY%3D)
+
+[**국회 입법 조사처 - 미술품 추급권(Resale Royalty Right)의 도입과 과제**](http://drm.nars.go.kr:7003/sd/imageviewer?doc_id=1MvzSFDLD82&DocId=1MvzSFDLD82&documentId=&DOCUMENTID=&DOCUMENTID=&EdmUserId=datauser&ViewerYn=Y&type=S&fileName=KE5BUlPtmITslYjrtoTshJ0gODHtmLgtMjAxOTExMjEp66%2B47Iig7ZKIIOy2lOq4ieq2jChSZXNhbGUgUm95YWx0eSBSaWdodCnsnZgg64%2BE7J6F6rO8IOqzvOygnC5wZGY%3D)
 
 Block in Art는 **블록체인 기술을 이용**해 한국에서도 **추급권에 대한 권리 행사가 가능하도록** 만들고자합니다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/fadcf892-0d18-433a-8a8c-9df99ad8efa0/Untitled.png)
+
+# **Mission**
 
 ### Blockchain을 활용한 추급권 권리 추구
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/b43e53ff-f385-4df9-9234-c1e1732cd605/Untitled.png)
 
 Block In Art는 작가님들의 **리셀차익**(재판매금액과 직전거래 금액간의 차이로인한 이익)에 대한
 
@@ -56,6 +57,7 @@ Block In Art는 작가님들의 **리셀차익**(재판매금액과 직전거래
 
 이렇게 구축된 서비스를 통해  **작가 중심의 미술시장** 실현을 추구합니다.
 
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/ca44240d-f8dc-4117-9542-3328f848e8d1/Untitled.png)
+# Service
 
-Block in Art를 통해 작가님들의 **리셀차액 지급 특약이 포함된 NFT 계약**을 보다 쉽게 체결하고 Block in Art의 토큰이코노미를 통해 **리셀차액의 로열티를 자동지급 받을 수 있습니다.**
+
+Block in Art를 통해 작가님들의 **리셀 차액 지급 특약이 포함된 NFT 계약**을 보다 쉽게 체결하고 Block in Art의 토큰이코노미를 통해 **리셀 차액의 로열티를 자동지급** 받을 수 있습니다.
